@@ -1,0 +1,20 @@
+apply plugin: 'kotlin'
+apply plugin: "org.jmailen.kotlinter"
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+
+    api project(':core')
+}

@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: "org.jmailen.kotlinter"
+
+android {
+    compileSdkVersion config.sdk.compile
+
+    defaultConfig {
+        minSdkVersion config.sdk.min
+        targetSdkVersion config.sdk.target
+        versionCode config.build.code
+        versionName config.build.name
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                    "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                    "room.incremental"     : "false",
+                    "room.expandProjection": "true"
+                ]
+            }
+        }
+
+        buildConfigField("String", "API_SUFFIX", '"' + config.api.api_suffix + '"')
+    }
+
+    flavorDimensions "api"
+    productFlavors {
+        dev {
+            dimension "api"
+            buildConfigField("String", "API_ROOT", '"' + config.api.api_root_dev + '"')
+            buildConfigField("String", "API_KEY", '"' + config.api_dev_key + '"')
+        }
+        stage {
+            dimension "api"
+            buildConfigField("String", "API_ROOT", '"' + config.api.api_root_stage + '"')
+            buildConfigField("String", "API_KEY", '"' + config.api_stage_key + '"')
+        }
+        production {
+            dimension "api"
+            buildConfigField("String", "API_ROOT", '"' + config.api.api_root_prod + '"')
+            buildConfigField("String", "API_KEY", '"' + config.api_prod_key + '"')
+        }
+    }
+
+    lintOptions {
+        abortOnError true
+        checkAllWarnings true
+        disable 'InvalidPackage'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+
+    /* AndroidX */
+    implementation lib.androidXCore
+
+    /* Network */
+    implementation lib.coroutines
+    implementation lib.okHttp3
+    implementation lib.okHttp3LoggingInterceptor
+    implementation lib.chucker
+    implementation lib.retrofit2
+    implementation lib.gson
+
+    /* Room */
+    implementation lib.roomCore
+    kapt lib.roomAnnotations
+    implementation lib.roomKt
+    coreLibraryDesugaring lib.desugaring
+
+    /* DI */
+    implementation lib.koinCore
+}

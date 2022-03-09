@@ -1,0 +1,12 @@
+# Android
+/screens
+local.properties
+
+# Gradle
+.gradle
+build
+
+# IntelliJ Idea
+*.iml
+.idea/*
+app/schemas/

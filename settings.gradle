@@ -1,0 +1,2 @@
+include ':app', ':domain', ':data',  ':core', ':presentation'
+rootProject.name = "ModuloTech"

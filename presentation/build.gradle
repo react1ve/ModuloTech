@@ -1,0 +1,85 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "org.jmailen.kotlinter"
+
+android {
+    compileSdkVersion config.sdk.compile
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        minSdkVersion config.sdk.min
+        targetSdkVersion config.sdk.target
+        versionCode config.build.code
+        versionName config.build.name
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        debug {
+        }
+        release {
+            minifyEnabled false
+            signingConfig = buildTypes.debug.signingConfig
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    flavorDimensions "api"
+    productFlavors {
+        dev {
+            dimension "api"
+        }
+        stage {
+            dimension "api"
+        }
+        production {
+            dimension "api"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+
+    /* AndroidX */
+    implementation lib.androidXCore
+    implementation lib.androidXAppCompat
+    implementation lib.androidXRecyclerView
+    implementation lib.androidXDesign
+    implementation lib.androidXConstraint
+    implementation lib.androidXMultiDex
+
+    /* Lifecycle */
+    implementation lib.lifecycleViewModel
+    implementation lib.lifecycleSavedState
+    implementation lib.lifecycleLiveData
+    implementation lib.lifecycleAnnotation
+    implementation lib.lifecycleRuntine
+    implementation lib.lifecycleNavigation
+    implementation lib.lifecycleNavigationUi
+
+    /* DI */
+    implementation lib.koinAndroid
+
+    /* UI */
+    implementation lib.civ
+
+    /* Tools */
+    coreLibraryDesugaring lib.desugaring
+}

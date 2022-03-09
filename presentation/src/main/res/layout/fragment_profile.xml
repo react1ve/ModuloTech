@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/size_60dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/placeholder" />
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="-4dp"
+            android:layout_marginEnd="-8dp"
+            android:src="@drawable/ic_edit"
+            tools:ignore="ContentDescription" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size_20dp"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        tools:ignore="ContentDescription"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/languageSetting"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/medium"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/size_22dp"
+        android:text="Language"
+        android:textColor="@color/neutral_800"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        app:drawableTint="@color/neutral_300" />
+
+    <include layout="@layout/divider" />
+
+    <TextView
+        android:id="@+id/darkModeSetting"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:fontFamily="@font/medium"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/size_22dp"
+        android:text="Darkmode"
+        android:textColor="@color/neutral_800"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        app:drawableTint="@color/neutral_300" />
+
+    <include layout="@layout/divider" />
+
+    <TextView
+        android:id="@+id/signOut"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:fontFamily="@font/medium"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/size_22dp"
+        android:text="Sign Out"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        app:drawableTint="@color/neutral_300" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

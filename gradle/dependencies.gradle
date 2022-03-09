@@ -1,0 +1,87 @@
+apply from: "gradle/build-versions.gradle"
+ext.versions = [
+    /*GRADLE DEPENDENCIES*/
+    androidPlugin     : "7.0.2",
+    kotlinPlugin      : "1.5.31",
+    ktlintPlugin      : "3.6.0",
+
+    /*APPLICATION DEPENDENCIES*/
+    kotlinStd         : "1.5.31",
+    coroutines        : "1.5.2",
+    androidXCore      : "1.6.0",
+    androidXAppCompat : "1.3.1",
+    androidXRecycler  : "1.2.1",
+    androidXDesign    : "1.4.0",
+    androidXConstraint: "2.1.1",
+    androidXMultiDex  : "2.0.1",
+    androidLifecycle  : "2.3.1",
+    androidDataBinding: "7.0.3",
+    androidNavigation : "2.3.5",
+    slf4j             : "1.7.28",
+    logback           : "1.1.1-6",
+    okHttp            : "4.9.0",
+    chucker            : "3.5.2",
+    retrofit2         : "2.9.0",
+    koin              : "3.1.2",
+    desugaring        : "1.1.5",
+    gson             : "2.9.0",
+    room              : "2.3.0",
+    civ              : "3.1.0",
+]
+
+ext.plugin = [
+    android         : "com.android.tools.build:gradle:$versions.androidPlugin",
+    androidSafeArgs : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidNavigation",
+    kotlin          : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlinPlugin",
+    ktlint          : "org.jmailen.gradle:kotlinter-gradle:$versions.ktlintPlugin",
+]
+
+ext.lib = [
+    kotlinStd                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlinStd",
+    coroutines               : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+
+    androidXCore             : "androidx.core:core:$versions.androidXCore",
+    androidXAppCompat        : "androidx.appcompat:appcompat:$versions.androidXAppCompat",
+    androidXRecyclerView     : "androidx.recyclerview:recyclerview:$versions.androidXRecycler",
+    androidXDesign           : "com.google.android.material:material:$versions.androidXDesign",
+    androidXConstraint       : "androidx.constraintlayout:constraintlayout:$versions.androidXConstraint",
+    androidXMultiDex         : "androidx.multidex:multidex:$versions.androidXMultiDex",
+
+    /* Lifecycle */
+    lifecycleViewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidLifecycle",
+    lifecycleSavedState      : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.androidLifecycle",
+    lifecycleLiveData        : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidLifecycle",
+    lifecycleAnnotation      : "androidx.lifecycle:lifecycle-common-java8:$versions.androidLifecycle",
+    lifecycleRuntine         : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.androidLifecycle",
+    lifecycleCompiler        : "androidx.lifecycle:lifecycle-compiler:$versions.androidLifecycle",
+    lifecycleNavigation      : "androidx.navigation:navigation-fragment-ktx:$versions.androidNavigation",
+    lifecycleNavigationUi    : "androidx.navigation:navigation-ui-ktx:$versions.androidNavigation",
+
+    /* Logger */
+    slf4j                    : "org.slf4j:slf4j-api:$versions.slf4j",
+    logbackCore              : "com.github.tony19:logback-android-core:$versions.logback",
+    logbackClassic           : "com.github.tony19:logback-android-classic:$versions.logback",
+
+    /* Network */
+    okHttp3                  : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+    okHttp3LoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+    chucker                 : "com.github.chuckerteam.chucker:library:$versions.chucker",
+    retrofit2                : "com.squareup.retrofit2:retrofit:$versions.retrofit2",
+    gson                    : "com.squareup.retrofit2:converter-gson:$versions.gson",
+
+    /* DI */
+    koinCore                 : "io.insert-koin:koin-core:$versions.koin",
+    koinAndroid              : "io.insert-koin:koin-android:$versions.koin",
+
+    /* Helper */
+    desugaring               : "com.android.tools:desugar_jdk_libs:$versions.desugaring",
+
+    /* Room */
+    roomCore                 : "androidx.room:room-runtime:$versions.room",
+    roomAnnotations          : "androidx.room:room-compiler:$versions.room",
+    roomKt                   : "androidx.room:room-ktx:$versions.room",
+
+    /* UI */
+    civ                         : "de.hdodenhof:circleimageview:$versions.civ",
+
+]

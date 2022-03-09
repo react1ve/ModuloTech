@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_location_title">App requires location permission</string>
+    <string name="permission_location_explanation">We use location services to find your geolocation</string>
+</resources>

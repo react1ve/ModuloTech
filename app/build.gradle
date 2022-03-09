@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: "org.jmailen.kotlinter"
+
+android {
+    compileSdkVersion config.sdk.compile
+
+    defaultConfig {
+        applicationId config.package
+        minSdkVersion config.sdk.min
+        targetSdkVersion config.sdk.target
+        versionCode config.build.code
+        versionName config.build.name
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        debug {
+        }
+        release {
+            minifyEnabled false
+            signingConfig = buildTypes.debug.signingConfig
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    flavorDimensions "api"
+    productFlavors {
+        dev {
+            dimension "api"
+        }
+        stage {
+            dimension "api"
+        }
+        production {
+            dimension "api"
+        }
+    }
+
+    variantFilter { variant ->
+        def type = variant.buildType.name
+        def names = variant.flavors*.name
+        if (type == "release" ||
+            names.contains("production")) {
+            setIgnore(true)
+        }
+    }
+
+    sourceSets {
+        main.java {
+            srcDirs += ['src/main/kotlin']
+        }
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.Experimental"]
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        abortOnError true
+        checkAllWarnings true
+        disable 'AllowBackup'
+        disable 'ContentDescription'
+        disable 'InvalidPackage'
+        disable 'SpUsage'
+        disable 'IconMissingDensityFolder'
+        disable 'SelectableText'
+        disable 'RtlCompat', 'RtlEnabled', 'RtlHardcoded', 'RtlSymmetry'
+        disable 'MissingPrefix'
+        disable 'MissingRegistered'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+dependencies {
+
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':presentation')
+
+    /* AndroidX */
+    implementation lib.androidXCore
+    implementation lib.androidXMultiDex
+
+    /* DI */
+    implementation lib.koinAndroid
+
+    /* Tools */
+    coreLibraryDesugaring lib.desugaring
+}

@@ -1,0 +1,33 @@
+def propertiesFile = rootProject.file("gradle.properties")
+def properties = new Properties()
+properties.load(new FileInputStream(propertiesFile))
+
+def apiKeysFile = rootProject.file("apikey.properties")
+def apiKeys = new Properties()
+apiKeys.load(new FileInputStream(apiKeysFile))
+
+ext.config = [
+    package      : properties.getProperty("PACKAGE_NAME"),
+
+    api_dev_key  : apiKeys.getProperty("API_DEV_KEY"),
+    api_stage_key: apiKeys.getProperty("API_STAGE_KEY"),
+    api_prod_key : apiKeys.getProperty("API_PROD_KEY"),
+
+    build        : [
+        code: properties.getProperty("VERSION_CODE") as Integer,
+        name: properties.getProperty("VERSION_NAME"),
+    ],
+
+    sdk          : [
+        min    : 23,
+        target : 30,
+        compile: 30,
+    ],
+
+    api          : [
+        api_suffix        : 'modulotest/',
+        api_root_dev     : 'http://storage42.com/',
+        api_root_stage   : 'http://storage42.com/',
+        api_root_prod    : 'http://storage42.com/'
+    ]
+]
