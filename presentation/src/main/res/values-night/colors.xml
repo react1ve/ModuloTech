@@ -21,5 +21,6 @@
     <color name="progress_back">#1E2A30</color>
     <color name="progress_color1">#00C0E1</color>
     <color name="progress_color2">#0080E2</color>
-
+    <color name="line_ruler_selected_color">#009FE7</color>
+    <color name="line_ruler_unselected_color">#052E40</color>
 </resources>
