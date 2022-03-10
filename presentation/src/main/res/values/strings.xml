@@ -4,27 +4,7 @@
     <!-- COMMON -->
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="settings">Settings</string>
     <string name="error">Error</string>
-    <string name="request">Request</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="goon">Continue</string>
-    <string name="search">Search</string>
-    <string name="send">Send</string>
-    <string name="time_right_now">Right now</string>
-    <string name="time_now">Now</string>
-    <string name="second_ago">1s</string>
-    <string name="in_second">In a second</string>
-    <string name="minute_ago">1m</string>
-    <string name="in_minute">In a minute</string>
-    <string name="hour_ago">1h</string>
-    <string name="in_hour">In an hour</string>
-    <string name="day_ago">1d</string>
-    <string name="in_day">Tomorrow</string>
-    <string name="week_ago">1w</string>
-    <string name="in_week">In a week</string>
-    <string name="delete">Delete</string>
 
     <!-- ERROR -->
     <string name="error_unknown_server">Unknown error</string>
@@ -36,15 +16,12 @@
     <string name="car_details_brand">Brand:</string>
     <string name="car_details_model">Model:</string>
     <string name="car_details_color">Color:</string>
-    <string name="car_details_edit">Edit</string>
-    <string name="car_details_create">Add</string>
     <string name="car_details_delete">Remove</string>
     <string name="car_details_brand_hint">Renault</string>
     <string name="car_details_model_hint">Megane</string>
     <string name="car_details_color_hint">Green</string>
     <string name="car_details_delete_title">Remove</string>
     <string name="car_details_delete_message">Are you sure?</string>
-    <string name="car_details_validation_error">Car details are incorrect</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="date_of_birth">Date of birth</string>

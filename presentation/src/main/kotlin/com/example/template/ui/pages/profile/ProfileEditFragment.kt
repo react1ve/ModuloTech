@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import com.example.domain.model.Address
 import com.example.domain.model.User
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentProfileEditBinding
@@ -25,7 +24,6 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
     override val viewModel: ProfileViewModel by viewModel()
     override val navigator: ProfileNavigator by lazy { ProfileNavigator(navigationController) }
     private val binding: FragmentProfileEditBinding by viewBinding(FragmentProfileEditBinding::inflate)
-    private var user: User? = null
 
     override fun onApplyScreenInsets() {
         super.onApplyScreenInsets()
@@ -63,7 +61,7 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
         super.initClicks()
         with(binding) {
             save.setOnClickListener {
-                viewModel.saveUser(user!!)
+                viewModel.saveUser()
                 navigator.back()
             }
             toolbar.back.setOnClickListener { navigator.back() }
@@ -93,16 +91,14 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
 
     private fun setUserData() {
         binding {
-            user = User(
-                firstName.text.toString(),
-                lastName.text.toString(),
-                Address(
-                    city.text.toString(),
-                    postalCode.text.toString().toInt(),
-                    address.text.toString(),
-                    country.text.toString()
-                ),
-                dateOfBirth.text.toString().parseUserDate()
+            viewModel.setUserFirstName(firstName.text.toString())
+            viewModel.setUserLastName(firstName.text.toString())
+            viewModel.setUserDateOfBirth(dateOfBirth.text.toString().parseUserDate())
+            viewModel.setUserAddress(
+                country.text.toString(),
+                city.text.toString(),
+                postalCode.text.toString().toInt(),
+                address.text.toString(),
             )
         }
     }

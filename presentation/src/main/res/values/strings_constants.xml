@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="vertical_slash" translatable="false">|</string>
-    <string name="ellipsis" translatable="false">…</string>
-
-    <string name="plus" translatable="false">+</string>
-    <string name="minus" translatable="false">-</string>
-    <string name="percent" translatable="false">%d%%</string>
 </resources>

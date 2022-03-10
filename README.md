@@ -30,6 +30,11 @@ Your project must be accessible on a Git project.
 • Proguard
 • DI
 
+
+## Credits
+• Design - https://dribbble.com/shots/6655071-Smart-Home-App/attachments
+• SVG icons - https://www.svgrepo.com
+
 ## Screenshot
 TODO
 
@@ -43,3 +48,5 @@ TODO
 - Retrofit
 - LiveData
 - ViewBinding
+- Navigation Component
+- Multi module

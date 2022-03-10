@@ -15,15 +15,15 @@
         android:paddingHorizontal="@dimen/size_30dp"
         android:paddingVertical="@dimen/size_24dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/icon_img"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/ic_light_bulb_3"
+            android:tint="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/blue"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,UseAppTint" />
 
         <Switch
             android:id="@+id/switchChecked"

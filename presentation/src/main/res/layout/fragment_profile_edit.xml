@@ -1,242 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profileEditFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:layout_weight="1"
+    android:background="@color/white">
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:background="@color/blue">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/content_toolbar_text" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/placeholder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/size_30dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/first_name"
+            android:textColor="@color/neutral_600" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:background="@color/blue">
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/first_names" />
 
-                <include
-                    android:id="@+id/toolbar"
-                    layout="@layout/content_toolbar_text" />
+        <include layout="@layout/divider" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img"
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/placeholder"
-                    tools:src="@tools:sample/backgrounds/scenic" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/last_name"
+            android:textColor="@color/neutral_600" />
 
-            </RelativeLayout>
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/last_names" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_30dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/first_name"
-                android:textColor="@color/neutral_600" />
+        <include layout="@layout/divider" />
 
-            <EditText
-                android:id="@+id/firstName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/bold"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/first_names" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/date_of_birth"
+            android:textColor="@color/neutral_600" />
 
-            <include layout="@layout/divider" />
+        <EditText
+            android:id="@+id/dateOfBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/date/ddmmyy" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/last_name"
-                android:textColor="@color/neutral_600" />
+        <include layout="@layout/divider" />
 
-            <EditText
-                android:id="@+id/lastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/bold"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/last_names" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/country"
+            android:textColor="@color/neutral_600" />
 
-            <include layout="@layout/divider" />
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/cities" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/date_of_birth"
-                android:textColor="@color/neutral_600" />
+        <include layout="@layout/divider" />
 
-            <EditText
-                android:id="@+id/dateOfBirth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/bold"
-                android:importantForAutofill="no"
-                android:inputType="date"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/date/ddmmyy" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/city"
+            android:textColor="@color/neutral_600" />
 
-            <include layout="@layout/divider" />
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/cities" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/country"
-                android:textColor="@color/neutral_600" />
+        <include layout="@layout/divider" />
 
-            <EditText
-                android:id="@+id/country"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/bold"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/cities" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/postal_code"
+            android:textColor="@color/neutral_600" />
 
-            <include layout="@layout/divider" />
+        <EditText
+            android:id="@+id/postalCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/us_zipcodes" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/city"
-                android:textColor="@color/neutral_600" />
+        <include layout="@layout/divider" />
 
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/bold"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/cities" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14dp"
+            android:fontFamily="@font/medium"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:text="@string/address"
+            android:textColor="@color/neutral_600" />
 
-            <include layout="@layout/divider" />
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:background="@android:color/transparent"
+            android:ellipsize="end"
+            android:fontFamily="@font/bold"
+            android:gravity="center_vertical"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/size_22dp"
+            android:singleLine="true"
+            android:textColor="@color/neutral_800"
+            android:textSize="18sp"
+            tools:ignore="LabelFor"
+            tools:text="@tools:sample/lorem/random" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/postal_code"
-                android:textColor="@color/neutral_600" />
+        <Button
+            android:id="@+id/save"
+            style="@style/button"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="@dimen/size_24dp"
+            android:layout_marginVertical="@dimen/size_24dp"
+            android:text="@string/save" />
 
-            <EditText
-                android:id="@+id/postalCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/bold"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/us_zipcodes" />
+    </LinearLayout>
 
-            <include layout="@layout/divider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14dp"
-                android:fontFamily="@font/medium"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:text="@string/address"
-                android:textColor="@color/neutral_600" />
-
-            <EditText
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4dp"
-                android:layout_marginBottom="@dimen/size_10dp"
-                android:background="@android:color/transparent"
-                android:ellipsize="end"
-                android:fontFamily="@font/bold"
-                android:gravity="center_vertical"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:paddingHorizontal="@dimen/size_22dp"
-                android:singleLine="true"
-                android:textColor="@color/neutral_800"
-                android:textSize="18sp"
-                tools:ignore="LabelFor"
-                tools:text="@tools:sample/lorem/random" />
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/save"
-        style="@style/button"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="@dimen/size_24dp"
-        android:layout_marginVertical="@dimen/size_24dp"
-        android:text="@string/save" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

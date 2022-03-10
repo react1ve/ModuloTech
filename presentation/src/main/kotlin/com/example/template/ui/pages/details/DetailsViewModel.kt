@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.domain.interactor.DeviceInteractor
 import com.example.domain.model.Device
-import com.example.template.common.android.ResourceProvider
 import com.example.template.common.arch.MvvmViewModel
 import com.example.template.common.arch.SingleLiveData
 import kotlinx.coroutines.Dispatchers
@@ -15,18 +14,17 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
-class TemplateDetailsViewModel(
+class DetailsViewModel(
     private val device: Device,
-    private val resourceProvider: ResourceProvider,
     private val deviceInteractor: DeviceInteractor
 ) : MvvmViewModel() {
 
     override val tag: String = "DetailsViewModel"
 
-    private val _updateCompletedEvent by lazy { SingleLiveData<Boolean>() }
+    private val _updateCompletedEvent = SingleLiveData<Boolean>()
     val updateCompletedEvent: LiveData<Boolean> get() = _updateCompletedEvent
 
-    private val _updateErrorEvent by lazy { SingleLiveData<String?>() }
+    private val _updateErrorEvent = SingleLiveData<String?>()
     val updateErrorEvent: LiveData<String?> get() = _updateErrorEvent
 
     fun deleteDetails() = deleteCar(device.id)

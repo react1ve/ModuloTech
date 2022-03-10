@@ -1,4 +1,4 @@
-package com.example.domain.common
+package com.example.data.database.common
 
 open class Mapper<Business, Dto>(
     private val fromBusinessMapper: (Business) -> Dto = unsupported(

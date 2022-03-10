@@ -2,14 +2,6 @@
 
     <!-- COMMON IMAGE STYLE -->
 
-    <style name="Image" parent="AppTheme">
-        <item name="android:contentDescription">@null</item>
-    </style>
-
-    <style name="Image.Button" parent="AppTheme">
-        <item name="android:background">@null</item>
-    </style>
-
     <!-- COMMON TEXT STYLES -->
 
     <style name="Text" parent="AppTheme">
@@ -17,32 +9,6 @@
     </style>
 
     <!-- UNDERLINED TEXT -->
-
-    <style name="Text.Underlined">
-        <item name="android:autoLink">all</item>
-        <item name="android:linksClickable">false</item>
-        <item name="android:selectAllOnFocus">false</item>
-    </style>
-
-    <style name="Text.Underlined.FontMedium">
-        <item name="android:fontFamily">@string/roboto_medium</item>
-    </style>
-
-    <style name="Text.Underlined.FontMedium.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.Underlined.FontRegular">
-        <item name="android:fontFamily">@string/roboto_regular</item>
-    </style>
-
-    <style name="Text.Underlined.FontRegular.Secondary.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.Underlined.FontRegular.Secondary">
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
 
     <!-- FONT REGULAR TEXT -->
 
@@ -66,50 +32,6 @@
         <item name="android:textColorHint">@color/text_secondary</item>
     </style>
 
-    <style name="Text.FontRegular.Primary.DP18">
-        <item name="android:textSize">@dimen/size_18dp</item>
-    </style>
-
-    <style name="Text.FontRegular.Primary.DP24">
-        <item name="android:textSize">@dimen/size_24dp</item>
-    </style>
-
-    <style name="Text.FontRegular.Accent">
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="Text.FontRegular.Secondary">
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-
-    <style name="Text.FontRegular.Secondary.DP12">
-        <item name="android:textSize">@dimen/size_12dp</item>
-    </style>
-
-    <style name="Text.FontRegular.Secondary.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.FontRegular.Secondary.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontRegular.White">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Text.FontRegular.White.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontRegular.White.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.FontRegular.Hint">
-        <item name="android:textColor">@color/text_hint</item>
-    </style>
-
     <!-- FONT BOLD TEXT -->
 
     <style name="Text.FontBold">
@@ -121,36 +43,8 @@
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
-    <style name="Text.FontBold.Primary.DP12">
-        <item name="android:textSize">@dimen/size_12dp</item>
-    </style>
-
-    <style name="Text.FontBold.Primary.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.FontBold.Primary.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontBold.Primary.DP18">
-        <item name="android:textSize">@dimen/size_18dp</item>
-    </style>
-
     <style name="Text.FontBold.Primary.DP24">
         <item name="android:textSize">@dimen/size_24dp</item>
-    </style>
-
-    <style name="Text.FontBold.Accent">
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="Text.FontBold.Accent.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontBold.Accent.DP18">
-        <item name="android:textSize">@dimen/size_18dp</item>
     </style>
 
     <style name="Text.FontBold.Black">
@@ -159,42 +53,6 @@
 
     <style name="Text.FontBold.Black.DP18">
         <item name="android:textSize">@dimen/size_18dp</item>
-    </style>
-
-    <style name="Text.FontBold.Secondary">
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-
-    <style name="Text.FontBold.Secondary.DP8">
-        <item name="android:textSize">@dimen/size_8dp</item>
-    </style>
-
-    <style name="Text.FontBold.White">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Text.FontBold.White.DP12">
-        <item name="android:textSize">@dimen/size_12dp</item>
-    </style>
-
-    <style name="Text.FontBold.White.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.FontBold.White.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontBold.White.DP22">
-        <item name="android:textSize">@dimen/size_22dp</item>
-    </style>
-
-    <style name="Text.FontBold.White.DP8">
-        <item name="android:textSize">@dimen/size_8dp</item>
-    </style>
-
-    <style name="Text.FontBold.Hint">
-        <item name="android:textColor">@color/text_hint</item>
     </style>
 
     <!-- FONT MEDIUM TEXT -->
@@ -207,104 +65,13 @@
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
-    <style name="Text.FontMedium.Primary.DP24">
-        <item name="android:textSize">@dimen/size_24dp</item>
-    </style>
-
     <style name="Text.FontMedium.Primary.DP16">
         <item name="android:textSize">@dimen/size_16dp</item>
     </style>
 
-    <style name="Text.FontMedium.Primary.DP18">
-        <item name="android:textSize">@dimen/size_18dp</item>
-    </style>
-
-    <style name="Text.FontMedium.Primary.DP20">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontMedium.Primary.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.FontMedium.Primary.DP10">
-        <item name="android:textSize">@dimen/size_10dp</item>
-    </style>
-
-    <style name="Text.FontMedium.Accent">
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="Text.FontMedium.Secondary">
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-
-    <style name="Text.FontMedium.Secondary.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
-    <style name="Text.FontMedium.Secondary.DP16">
-        <item name="android:textSize">@dimen/size_16dp</item>
-    </style>
-
-    <style name="Text.FontMedium.White">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Text.FontMedium.Hint">
-        <item name="android:textColor">@color/text_hint</item>
-    </style>
-
     <!-- FONT LIGHT TEXT -->
 
-    <style name="Text.FontLight">
-        <item name="android:fontFamily">@string/roboto_light</item>
-    </style>
-
-    <style name="Text.FontLight.Primary">
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-
-    <style name="Text.FontLight.Accent">
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="Text.FontLight.Secondary">
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-
-    <style name="Text.FontLight.White">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Text.FontRegular.White.DP18">
-        <item name="android:textSize">@dimen/size_18dp</item>
-    </style>
-
-    <style name="Text.FontRegular.White.DP24">
-        <item name="android:textSize">@dimen/size_24dp</item>
-    </style>
-
-    <style name="Text.FontRegular.Accent.DP12">
-        <item name="android:textColor">@color/accent</item>
-        <item name="android:textSize">@dimen/size_12dp</item>
-    </style>
-
-    <style name="Text.FontLight.Hint">
-        <item name="android:textColor">@color/text_hint</item>
-    </style>
-
-    <style name="Text.FontLight.Hint.DP14">
-        <item name="android:textSize">@dimen/size_14dp</item>
-    </style>
-
     <!-- MATERIAL EDIT TEXT -->
-
-    <style name="MaterialEditText.Hint" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">@color/text_secondary</item>
-        <item name="android:textSize">@dimen/size_12dp</item>
-        <item name="android:fontFamily">@string/roboto_regular</item>
-    </style>
 
     <!-- BUTTONS -->
 
@@ -323,22 +90,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-
-    <style name="Button.White">
-        <item name="android:minHeight">0dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:paddingStart">@dimen/size_44dp</item>
-        <item name="android:paddingEnd">@dimen/size_44dp</item>
-        <item name="android:paddingBottom">@dimen/size_8dp</item>
-        <item name="android:paddingTop">@dimen/size_8dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">@color/accent</item>
-        <item name="android:textSize">@dimen/size_16dp</item>
-        <item name="android:fontFamily">@string/roboto_regular</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:background">@color/white</item>
-    </style>
 
     <style name="imgStyle">
         <item name="android:clickable">true</item>

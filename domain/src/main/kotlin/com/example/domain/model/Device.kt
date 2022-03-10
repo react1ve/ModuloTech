@@ -8,7 +8,9 @@ sealed class Device(
     open val productType: DeviceType
 ) : Serializable {
 
-    protected val on = "ON"
+    companion object {
+        protected const val on = "ON"
+    }
 
     data class Light(
         override val id: Int,

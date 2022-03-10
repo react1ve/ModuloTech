@@ -8,11 +8,6 @@ data class User(
     val address: Address,
     val birthDate: Long
 ) : Serializable {
-    override fun equals(other: Any?): Boolean = other is User
-        && firstName == other.firstName
-        && lastName == other.lastName
-        && address == other.address
-        && birthDate == other.birthDate
 
     fun getFullName() = "$firstName $lastName"
 }

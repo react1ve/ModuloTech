@@ -13,7 +13,9 @@ import androidx.room.Update
  */
 internal abstract class BaseDao<T> {
 
-    private val FAILED_OPERATION: Long get() = -1L
+    companion object {
+        private const val FAILED_OPERATION: Long = -1L
+    }
 
     /**
      * Insert object in DB.

@@ -10,4 +10,6 @@ class UserInteractor(private val userRepositoryApi: UserRepositoryApi) {
     suspend fun saveUser(user: User) = userRepositoryApi.saveUser(user)
 
     suspend fun initUsers() = userRepositoryApi.initUser()
+
+    fun logOut() = userRepositoryApi.logOut()
 }

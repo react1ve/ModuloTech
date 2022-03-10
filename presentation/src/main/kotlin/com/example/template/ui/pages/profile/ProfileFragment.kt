@@ -24,7 +24,10 @@ class ProfileFragment : BaseFragment(), LoadingView {
         super.initClicks()
         with(binding) {
             edit.setOnClickListener { navigator.openEditProfile() }
-            signOut.setOnClickListener { /*todo*/ }
+            signOut.setOnClickListener {
+                viewModel.logOut()
+                navigator.back()
+            }
             languageSetting.setOnClickListener { /*todo*/ }
             darkModeSetting.setOnClickListener { /*todo*/ }
         }

@@ -1,7 +1,7 @@
 package com.example.data.database.mapper
 
+import com.example.data.database.common.Mapper
 import com.example.data.network.response.UserResp
-import com.example.domain.common.Mapper
 import com.example.domain.model.Address
 import com.example.domain.model.User
 

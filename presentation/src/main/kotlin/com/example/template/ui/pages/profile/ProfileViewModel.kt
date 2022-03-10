@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.domain.interactor.UserInteractor
+import com.example.domain.model.Address
 import com.example.domain.model.User
 import com.example.template.common.arch.MvvmViewModel
 import com.example.template.common.arch.SingleLiveData
@@ -26,11 +27,13 @@ class ProfileViewModel(
 
     override val tag: String get() = "ListViewModel"
 
-    private val _userState by lazy { MutableLiveData<User>() }
+    private var user: User? = null
+
+    private val _userState = MutableLiveData<User>()
     val userState: LiveData<User> = _userState
-    private val _loadingProgressEvent by lazy { SingleLiveData<Boolean>() }
+    private val _loadingProgressEvent = SingleLiveData<Boolean>()
     val loadingProgressEvent: LiveData<Boolean> = _loadingProgressEvent
-    private val _loadingErrorEvent by lazy { SingleLiveData<String?>() }
+    private val _loadingErrorEvent = SingleLiveData<String?>()
     val loadingErrorEvent: LiveData<String?> = _loadingErrorEvent
 
     override fun attach() {
@@ -51,6 +54,7 @@ class ProfileViewModel(
                     if (it == null) {
                         initUsers()
                     } else {
+                        user = it
                         _userState.value = it
                         _loadingProgressEvent.value = false
                     }
@@ -69,11 +73,35 @@ class ProfileViewModel(
         }
     }
 
-    fun saveUser(user: User) {
+    fun saveUser() {
         viewModelScope.launch(Dispatchers.Main) {
-            userInteractor.saveUser(user)
+            user?.let {
+                userInteractor.saveUser(it)
+            }
             getUser()
         }
+    }
+
+    fun logOut() {
+        viewModelScope.launch {
+            userInteractor.logOut()
+        }
+    }
+
+    fun setUserFirstName(firstName: String) {
+        user = user?.copy(firstName = firstName)
+    }
+
+    fun setUserLastName(lastName: String) {
+        user = user?.copy(lastName = lastName)
+    }
+
+    fun setUserDateOfBirth(birthDate: Long) {
+        user = user?.copy(birthDate = birthDate)
+    }
+
+    fun setUserAddress(country: String, city: String, postalCode: Int, street: String) {
+        user = user?.copy(address = Address(country = country, city = city, postalCode = postalCode, street = street))
     }
 
 }

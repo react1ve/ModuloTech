@@ -1,16 +1,30 @@
 package com.example.data.repository
 
-import com.example.data.datasource.database.DataSource
+import com.example.data.database.mapper.UserDtoMapper
+import com.example.data.network.api.DataApi
+import com.example.data.preferences.SharedPreferencesManager
 import com.example.domain.api.UserRepositoryApi
 import com.example.domain.model.User
+import com.google.gson.Gson
 
-internal class UserRepository(private val dataSource: DataSource) : UserRepositoryApi {
+internal class UserRepository(
+    private val preferencesManager: SharedPreferencesManager,
+    gson: Gson,
+    api: DataApi
+) : BaseRepository(gson, api), UserRepositoryApi {
 
-    override suspend fun getUser(): User? = dataSource.getUser()
+    override suspend fun getUser(): User? = preferencesManager.user
 
     override suspend fun saveUser(user: User) {
-        dataSource.saveUser(user)
+        preferencesManager.user = user
     }
 
-    override suspend fun initUser(): User? = dataSource.initUser()
+    override suspend fun initUser(): User? {
+        return getData()?.let { response ->
+            saveUser(UserDtoMapper.fromDto(response.user))
+            getUser()
+        } ?: getUser()
+    }
+
+    override fun logOut() = preferencesManager.deleteAll()
 }

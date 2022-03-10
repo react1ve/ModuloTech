@@ -10,4 +10,5 @@ interface UserRepositoryApi {
 
     suspend fun initUser(): User?
 
+    fun logOut()
 }

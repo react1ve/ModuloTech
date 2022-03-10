@@ -18,7 +18,7 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
     private val device: Device? by lazy { args.device }
 
     override val loggerTag: String get() = this::class.java.simpleName
-    override val viewModel: TemplateDetailsViewModel by viewModel { parametersOf(device) }
+    override val viewModel: DetailsViewModel by viewModel { parametersOf(device) }
     override val navigator: TemplateDetailsNavigator by lazy { TemplateDetailsNavigator(navigationController) }
 
     private val binding: FragmentTemplateDetailsBinding by viewBinding(FragmentTemplateDetailsBinding::inflate)

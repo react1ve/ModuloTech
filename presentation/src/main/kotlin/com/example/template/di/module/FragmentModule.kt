@@ -1,10 +1,9 @@
 package com.example.template.di.module
 
 import com.example.domain.model.Device
+import com.example.template.ui.pages.details.DetailsViewModel
 import com.example.template.ui.pages.details.DeviceDetailsFragment
-import com.example.template.ui.pages.details.TemplateDetailsViewModel
 import com.example.template.ui.pages.list.DeviceListFragment
-
 import com.example.template.ui.pages.list.DeviceListViewModel
 import com.example.template.ui.pages.profile.ProfileEditFragment
 import com.example.template.ui.pages.profile.ProfileFragment
@@ -23,7 +22,7 @@ internal val deviceListFragmentModule = module {
 internal val deviceDetailsFragmentModule = module {
     scope<DeviceDetailsFragment> {
         viewModel { (device: Device) ->
-            TemplateDetailsViewModel(device, resourceProvider = get(), deviceInteractor = get())
+            DetailsViewModel(device, deviceInteractor = get())
         }
     }
 }

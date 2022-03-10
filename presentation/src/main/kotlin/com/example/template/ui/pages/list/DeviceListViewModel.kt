@@ -22,11 +22,11 @@ class DeviceListViewModel(
 
     override val tag: String get() = "ListViewModel"
 
-    private val _carsListState by lazy { MutableLiveData<List<Device>>() }
+    private val _carsListState = MutableLiveData<List<Device>>()
     val deviceListState: LiveData<List<Device>> = _carsListState
-    private val _loadingProgressEvent by lazy { SingleLiveData<Boolean>() }
+    private val _loadingProgressEvent = SingleLiveData<Boolean>()
     val loadingProgressEvent: LiveData<Boolean> = _loadingProgressEvent
-    private val _loadingErrorEvent by lazy { SingleLiveData<String?>() }
+    private val _loadingErrorEvent = SingleLiveData<String?>()
     val loadingErrorEvent: LiveData<String?> = _loadingErrorEvent
 
     override fun attach() {
