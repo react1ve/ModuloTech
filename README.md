@@ -56,4 +56,8 @@ Your project must be accessible on a Git project.
 - ViewBinding
 - Navigation Component
 - Multi module
+- Single Activity Concept
+- Android Architecture Components
+- Android Jetpack Components
 - *CustomViews
+- SOLID, DRY, KISS principles

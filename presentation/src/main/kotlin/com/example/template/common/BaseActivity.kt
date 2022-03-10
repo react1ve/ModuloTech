@@ -13,7 +13,6 @@ import androidx.navigation.NavController
 import androidx.viewbinding.ViewBinding
 import com.example.core.common.safeCast
 import com.example.core.logger.logger
-import com.example.template.common.android.ContextWrapper
 import com.example.template.common.android.delegate.DialogDelegate
 import com.example.template.common.android.delegate.KeyboardDelegate
 import com.example.template.common.android.ext.android.applyNoStatusBar
@@ -44,8 +43,6 @@ abstract class BaseActivity : ScopeActivity, NestedInflater {
 
     abstract val loggerTag: String
     protected val log by lazy { logger(loggerTag) }
-
-    protected val contextWrapper: ContextWrapper get() = ContextWrapper(this)
 
     /* MVVM */
     protected abstract val viewModel: MvvmViewModel

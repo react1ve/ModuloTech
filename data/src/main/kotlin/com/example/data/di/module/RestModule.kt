@@ -59,12 +59,17 @@ private fun provideRetrofitBuilder(gson: Gson): Retrofit.Builder = Retrofit.Buil
 fun providePublicOkHttpClient(
     chuckerLoggingInterceptor: ChuckerInterceptor,
     httpLoggingInterceptor: HttpLoggingInterceptor
-): OkHttpClient = OkHttpClient.Builder()
-    .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-    .readTimeout(TIME_OUT, TimeUnit.SECONDS)
-    .addInterceptor(chuckerLoggingInterceptor)
-    .addInterceptor(httpLoggingInterceptor)
-    .build()
+): OkHttpClient {
+    val builder = OkHttpClient.Builder()
+        .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
+        .readTimeout(TIME_OUT, TimeUnit.SECONDS)
+
+    if (BuildConfig.DEBUG) {
+        builder.addInterceptor(chuckerLoggingInterceptor)
+        builder.addInterceptor(httpLoggingInterceptor)
+    }
+    return builder.build()
+}
 
 private fun provideAuthApi(
     retrofitBuilder: Retrofit.Builder,

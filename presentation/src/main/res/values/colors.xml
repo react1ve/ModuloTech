@@ -15,7 +15,7 @@
     <color name="blue">#0077E1</color>
     <color name="font">#3A536B</color>
     <color name="fontSecondary">#8696A1</color>
-    <color name="background">#F2F4F5</color>
+    <color name="background">#fff</color>
     <color name="switchDisabled">#C6CFD5</color>
     <color name="switchCenter">#B7D7F3</color>
     <color name="progress_back">#DDE9EF</color>

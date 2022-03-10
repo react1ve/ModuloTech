@@ -1,5 +1,6 @@
 package com.example.template.ui.pages.profile
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -16,6 +17,8 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import java.text.ParseException
+import java.text.SimpleDateFormat
 
 class ProfileViewModel(
     private val userInteractor: UserInteractor
@@ -31,6 +34,8 @@ class ProfileViewModel(
 
     private val _userState = MutableLiveData<User>()
     val userState: LiveData<User> = _userState
+    private val _profileTextState = MutableLiveData<Pair<ProfileTextState, ProfileField>>()
+    val profileTextState: LiveData<Pair<ProfileTextState, ProfileField>> = _profileTextState
     private val _loadingProgressEvent = SingleLiveData<Boolean>()
     val loadingProgressEvent: LiveData<Boolean> = _loadingProgressEvent
     private val _loadingErrorEvent = SingleLiveData<String?>()
@@ -100,8 +105,15 @@ class ProfileViewModel(
         user = user?.copy(birthDate = birthDate)
     }
 
-    fun setUserAddress(country: String, city: String, postalCode: Int, street: String) {
-        user = user?.copy(address = Address(country = country, city = city, postalCode = postalCode, street = street))
+    fun setUserAddress(country: String, city: String, postalCode: String, street: String) {
+        user = user?.copy(
+            address = Address(
+                country = country,
+                city = city,
+                postalCode = if (postalCode.isNotBlank()) postalCode.toInt() else 0,
+                street = street
+            )
+        )
     }
 
     fun setAppTheme(themeMode: Int) {
@@ -111,4 +123,45 @@ class ProfileViewModel(
     fun setAppLang(lang: String) {
         viewModelScope.launch { userInteractor.setAppLang(lang) }
     }
+
+    fun onTextChanged(text: String, inputType: ProfileField) {
+        when {
+            text.isBlank() -> _profileTextState.value = Pair(ProfileTextState.TextEmpty, inputType)
+            text.length < 3 -> _profileTextState.value = Pair(ProfileTextState.TextTooShort, inputType)
+            else -> _profileTextState.value = Pair(ProfileTextState.TextOk, inputType)
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun isValidDate(text: String, inputType: ProfileField) {
+        val sdf = SimpleDateFormat(USER_DATE_FORMAT).apply {
+            isLenient = false
+        }
+        val successFulParse = try {
+            sdf.parse(text)
+            true
+        } catch (e: ParseException) {
+            false
+        }
+        _profileTextState.value =
+            Pair(if (successFulParse) ProfileTextState.TextOk else ProfileTextState.ExtraValidation, inputType)
+    }
+
+}
+
+enum class ProfileField {
+    FIRST_NAME,
+    LAST_NAME,
+    DATE_OF_BIRTH,
+    COUNTRY,
+    CITY,
+    POSTAL_CODE,
+    ADDRESS;
+}
+
+sealed class ProfileTextState {
+    object TextOk : ProfileTextState()
+    object TextEmpty : ProfileTextState()
+    object TextTooShort : ProfileTextState()
+    object ExtraValidation : ProfileTextState()
 }
