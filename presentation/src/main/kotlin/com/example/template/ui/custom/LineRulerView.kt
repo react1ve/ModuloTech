@@ -3,7 +3,6 @@ package com.example.template.ui.custom
 import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.os.Build
 import android.util.AttributeSet
@@ -86,7 +85,6 @@ class LineRulerView : View {
         viewHeight = measuredHeight
         viewWidth = measuredWidth
         val viewInterval = viewHeight.toFloat() / (MAX_DATA - MIN_DATA)
-        canvas.drawLine(0f, 0f, (viewWidth / longHeightRatio * baseHeightRatio).toFloat(), 0f, paint!!)
         var i = 1
         while (i < MAX_DATA - MIN_DATA) {
             paint?.color = context.getColor(if ((MAX_DATA - MIN_DATA-i) < progress) selectedColor else unselectedColor)
