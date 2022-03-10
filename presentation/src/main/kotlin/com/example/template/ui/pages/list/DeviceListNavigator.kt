@@ -10,4 +10,10 @@ class DeviceListNavigator(navigationController: NavController) : Navigator(navig
         navigationController.navigate(
             DeviceListFragmentDirections.actionTemplateListFragmentToTemplateDetailsFragment(device)
         )
+
+    fun openSettings() =
+        navigationController.navigate(
+            DeviceListFragmentDirections.actionDeviceListFragmentToProfileFragment()
+        )
+
 }

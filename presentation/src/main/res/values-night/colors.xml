@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#0077E1</color>
+    <color name="primary">#005FFE</color>
     <color name="primary_dark">#0036ca</color>
-    <color name="accent">#0077E1</color>
+    <color name="accent">#005FFE</color>
     <color name="text_primary">#2D2C3F</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
@@ -13,12 +13,12 @@
     <color name="neutral_600">#7F8B90</color>
     <color name="red">#D50C4A</color>
     <color name="blue">#0077E1</color>
-    <color name="font">#3A536B</color>
-    <color name="fontSecondary">#8696A1</color>
-    <color name="background">#F2F4F5</color>
-    <color name="switchDisabled">#C6CFD5</color>
-    <color name="switchCenter">#B7D7F3</color>
-    <color name="progress_back">#DDE9EF</color>
+    <color name="font">#FFFFFF</color>
+    <color name="fontSecondary">#BFD1DD</color>
+    <color name="background">#232323</color>
+    <color name="switchDisabled">#696969</color>
+    <color name="switchCenter">#01213C</color>
+    <color name="progress_back">#1E2A30</color>
     <color name="progress_color1">#00C0E1</color>
     <color name="progress_color2">#0080E2</color>
 

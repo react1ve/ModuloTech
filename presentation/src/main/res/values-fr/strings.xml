@@ -1,0 +1,43 @@
+<resources>
+    <!-- COMMON -->
+    <string name="ok">d\'accord</string>
+    <string name="cancel">Annuler</string>
+    <string name="error">Erreur</string>
+
+    <!-- ERROR -->
+    <string name="error_unknown_server">Erreur inconnue</string>
+    <string name="error_unauthorized">Erreur d\'autorisation</string>
+    <string name="error_connectivity">Pas de connexion réseau</string>
+
+    <!-- CAR DETAILS -->
+    <string name="first_name">Prénom</string>
+    <string name="last_name">Nom de famille</string>
+    <string name="date_of_birth">Date de naissance</string>
+    <string name="country">De campagne</string>
+    <string name="city">Ville</string>
+    <string name="postal_code">Code Postal</string>
+    <string name="address">Adresse</string>
+    <string name="save">sauvegarder</string>
+    <string name="empty_field_error">Le champ ne peut pas être vide</string>
+    <string name="invalid_field_error">Données invalides</string>
+    <string name="cantonment">Cantonnement</string>
+    <string name="just_updated">Juste mis à jour</string>
+    <string name="_28_c">28°c</string>
+    <string name="_37_c">37°c extérieur</string>
+    <string name="c">%s°c</string>
+    <string name="turbo_mode">mode Turbo</string>
+    <string name="set_timer">Régler la minuterie</string>
+    <string name="cooling_mode">Mode de refroidissement</string>
+    <string name="delete_title">Supprimer</string>
+    <string name="delete_message">Êtes-vous sûr?</string>
+    <string name="apply">Appliquer</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="filter">Filtrer les appareils</string>
+    <string name="app_theme">Thème d\application</string>
+    <string name="theme_light">Thème lumière</string>
+    <string name="theme_dark">Thème sombre</string>
+    <string name="theme_system">Thème système</string>
+    <string name="app_language">Langue de l\'application</string>
+    <string name="french">Français</string>
+    <string name="english">Anglais</string>
+</resources>

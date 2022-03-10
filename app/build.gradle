@@ -98,6 +98,7 @@ dependencies {
 
     /* DI */
     implementation lib.koinAndroid
+    implementation lib.lang
 
     /* Tools */
     coreLibraryDesugaring lib.desugaring

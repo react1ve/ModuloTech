@@ -81,6 +81,7 @@ dependencies {
     implementation lib.civ
     implementation lib.seekbar
     implementation lib.flexbox
+    implementation lib.lang
 
     /* Tools */
     coreLibraryDesugaring lib.desugaring

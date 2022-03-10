@@ -42,7 +42,10 @@ class DeviceListFragment : BaseFragment(), LoadingView {
     }
 
     override fun initClicks() {
-        binding.filter.setOnClickListener { openFilterBottomSheet() }
+        binding {
+            filter.setOnClickListener { openFilterBottomSheet() }
+            settings.setOnClickListener { navigator.openSettings() }
+        }
     }
 
     private fun openFilterBottomSheet() {

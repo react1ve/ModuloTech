@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_templateListFragment_to_templateDetailsFragment"
             app:destination="@id/deviceDetailsFragment" />
+        <action
+            android:id="@+id/action_deviceListFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment

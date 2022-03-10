@@ -35,4 +35,11 @@
     <string name="apply">Apply</string>
     <string name="reset">Reset</string>
     <string name="filter">Filter Devices</string>
+    <string name="app_theme">Application Theme</string>
+    <string name="theme_light">Light theme</string>
+    <string name="theme_dark">Dark theme</string>
+    <string name="theme_system">System theme</string>
+    <string name="app_language">Application language</string>
+    <string name="french">French</string>
+    <string name="english">English</string>
 </resources>

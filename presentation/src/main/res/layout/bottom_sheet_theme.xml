@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/BottomSheetTitle"
+        android:text="@string/app_theme" />
+
+    <TextView
+        android:id="@+id/light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/medium"
+        android:paddingVertical="8dp"
+        android:text="@string/theme_light"
+        android:textColor="@color/font"
+        android:textSize="16sp" />
+
+    <include layout="@layout/divider" />
+
+    <TextView
+        android:id="@+id/dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/medium"
+        android:paddingVertical="8dp"
+        android:text="@string/theme_dark"
+        android:textColor="@color/font"
+        android:textSize="16sp" />
+
+    <include layout="@layout/divider" />
+
+    <TextView
+        android:id="@+id/system"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/medium"
+        android:paddingVertical="8dp"
+        android:text="@string/theme_system"
+        android:textColor="@color/font"
+        android:textSize="16sp" />
+
+</LinearLayout>
