@@ -8,6 +8,7 @@
         <item name="android:autofilledHighlight" tools:ignore="NewApi">@color/transparent</item>
         <item name="android:ambientShadowAlpha">0.12</item>
         <item name="android:spotShadowAlpha">0</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="AppTheme.NoStatusBar">
@@ -34,6 +35,13 @@
         <item name="textColorAlertDialogListItem">@color/black</item>
     </style>
 
-    <!-- https://stackoverflow.com/a/46708018 -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_rounded_bg</item>
+    </style>
+
 
 </resources>

@@ -1,67 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/size_8dp"
     android:layout_marginVertical="@dimen/size_8dp"
-    app:cardCornerRadius="@dimen/size_16dp"
-    app:cardElevation="0dp">
+    android:background="@drawable/rounded_white"
+    android:paddingHorizontal="@dimen/size_30dp"
+    android:paddingVertical="@dimen/size_24dp"
+    android:translationZ="5dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/icon_img"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/ic_light_bulb_3"
+        android:tint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,UseAppTint" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_delete"
+        android:tint="@color/red"
+        app:layout_constraintBottom_toBottomOf="@id/model_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription,UseAppTint" />
+
+    <Switch
+        android:id="@+id/switchChecked"
+        android:layout_width="@dimen/track_width"
+        android:layout_height="@dimen/thumb_height"
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/track"
+        app:layout_constraintBottom_toBottomOf="@id/icon_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_img"
+        tools:checked="true"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/brand_text_view"
+        style="@style/Text.FontBold.Black.DP18"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/size_30dp"
-        android:paddingVertical="@dimen/size_24dp">
+        android:layout_marginTop="@dimen/size_24dp"
+        android:fontFamily="@font/bold"
+        android:maxLines="2"
+        android:textColor="@color/font"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/model_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_img"
+        tools:text="Air" />
 
-        <ImageView
-            android:id="@+id/icon_img"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ic_light_bulb_3"
-            android:tint="@color/blue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription,UseAppTint" />
-
-        <Switch
-            android:id="@+id/switchChecked"
-            android:layout_width="@dimen/track_width"
-            android:layout_height="@dimen/thumb_height"
-            android:thumb="@drawable/thumb"
-            android:track="@drawable/track"
-            app:layout_constraintBottom_toBottomOf="@id/icon_img"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/icon_img"
-            tools:checked="true"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-        <TextView
-            android:id="@+id/brand_text_view"
-            style="@style/Text.FontBold.Black.DP18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_24dp"
-            android:fontFamily="@font/bold"
-            android:maxLines="2"
-            android:textColor="@color/font"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/icon_img"
-            tools:text="Air" />
-
-        <TextView
-            android:id="@+id/model_text_view"
-            style="@style/Text.FontRegular.Primary.DP14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4dp"
-            android:fontFamily="@font/medium"
-            android:maxLines="2"
-            android:textColor="@color/fontSecondary"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/brand_text_view"
-            tools:text="Panasonic" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/model_text_view"
+        style="@style/Text.FontRegular.Primary.DP14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_4dp"
+        android:fontFamily="@font/medium"
+        android:maxLines="2"
+        android:textColor="@color/fontSecondary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/delete"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Panasonic" />
+</androidx.constraintlayout.widget.ConstraintLayout>

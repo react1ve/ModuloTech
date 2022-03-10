@@ -8,6 +8,8 @@ import com.example.presentation.R
 import com.example.presentation.databinding.FragmentDeviceListBinding
 import com.example.template.common.BaseFragment
 import com.example.template.common.arch.viewbinding.LoadingView
+import com.example.template.ui.pages.list.filter.Filter
+import com.example.template.ui.pages.list.filter.FilterBottomSheet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DeviceListFragment : BaseFragment(), LoadingView {
@@ -19,10 +21,13 @@ class DeviceListFragment : BaseFragment(), LoadingView {
     private val binding: FragmentDeviceListBinding by viewBinding(FragmentDeviceListBinding::inflate)
 
     private val adapter: DevicesAdapter by lazy {
-        DevicesAdapter { navigator.openDetails(it) }
-        // todo delete
+        DevicesAdapter({ device, delete ->
+            if (delete) deleteDevice(device)
+            else navigator.openDetails(device)
+        }, { device -> viewModel.updateDevice(device) })
     }
 
+    private var deviceList = listOf<Device>()
     override fun onApplyScreenInsets() {
         super.onApplyScreenInsets()
         binding.listLayout.applyStatusBarInsetWithPadding()
@@ -34,6 +39,17 @@ class DeviceListFragment : BaseFragment(), LoadingView {
         binding.recyclerView.adapter = adapter
 
         observeLiveData()
+    }
+
+    override fun initClicks() {
+        binding.filter.setOnClickListener { openFilterBottomSheet() }
+    }
+
+    private fun openFilterBottomSheet() {
+        val bsh = FilterBottomSheet(deviceList.map { Filter(it.productType.title, false) }.distinct()) { filter ->
+            adapter.setData(deviceList.filter { it.productType.title == filter?.name })
+        }
+        if (!bsh.isAdded) bsh.show(childFragmentManager, "FilterBottomSheet")
     }
 
     override fun observeLiveData() {
@@ -48,14 +64,15 @@ class DeviceListFragment : BaseFragment(), LoadingView {
     private fun observeLoadingErrorEvent(): Observer<String?> = Observer { showError(it) }
 
     private fun showData(list: List<Device>) {
-        adapter.updateItems(list)
+        deviceList = list
+        adapter.setData(list)
     }
 
     private fun deleteDevice(device: Device) {
         dialogDelegate?.showYesNoDialog(
             title = getString(R.string.delete_title),
             message = getString(R.string.delete_message),
-//            yesAction = { viewModel.deleteDetails() }
+            yesAction = { viewModel.deleteDevice(device) }
         )
     }
 }

@@ -46,16 +46,29 @@
         android:id="@+id/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/size_16dp"
+        android:layout_marginEnd="@dimen/size_10dp"
         android:drawableStart="@drawable/ic_ocean"
         android:drawablePadding="8dp"
         android:fontFamily="@font/light"
         android:text="@string/_28_c"
         android:textColor="@color/blue"
         android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/filter"
         app:layout_constraintTop_toTopOf="@id/icon"
         tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <ImageView
+        android:id="@+id/filter"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="@dimen/size_16dp"
+        android:src="@drawable/ic_filter_svgrepo_com"
+        android:tint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/temperature"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/temperature"
+        tools:ignore="ContentDescription,UseAppTint" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

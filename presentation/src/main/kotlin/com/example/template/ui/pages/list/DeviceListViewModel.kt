@@ -22,8 +22,8 @@ class DeviceListViewModel(
 
     override val tag: String get() = "ListViewModel"
 
-    private val _carsListState = MutableLiveData<List<Device>>()
-    val deviceListState: LiveData<List<Device>> = _carsListState
+    private val _deviceListState = MutableLiveData<List<Device>>()
+    val deviceListState: LiveData<List<Device>> = _deviceListState
     private val _loadingProgressEvent = SingleLiveData<Boolean>()
     val loadingProgressEvent: LiveData<Boolean> = _loadingProgressEvent
     private val _loadingErrorEvent = SingleLiveData<String?>()
@@ -31,18 +31,22 @@ class DeviceListViewModel(
 
     override fun attach() {
         super.attach()
+        getDevices()
+    }
+
+    private fun getDevices(showLoading: Boolean = true) {
         viewModelScope.launch(Dispatchers.Main) {
             flow { emit(deviceInteractor.getDevices()) }
                 .flowOn(Dispatchers.IO)
-                .onStart { _loadingProgressEvent.value = true }
+                .onStart { _loadingProgressEvent.value = showLoading }
                 .catch {
                     _loadingErrorEvent.value = it.message
                     _loadingProgressEvent.value = false
                 }
                 .collect {
-                    _carsListState.value = it
+                    _deviceListState.value = it
                     if (it.isEmpty()) {
-                        initCars()
+                        initialize()
                     } else {
                         _loadingProgressEvent.value = false
                     }
@@ -50,14 +54,34 @@ class DeviceListViewModel(
         }
     }
 
-    private fun initCars() {
+    private fun initialize() {
         viewModelScope.launch(Dispatchers.Main) {
             flow { emit(deviceInteractor.initDevices()) }
                 .flowOn(Dispatchers.IO)
                 .onStart { _loadingProgressEvent.value = true }
                 .onCompletion { _loadingProgressEvent.value = false }
                 .catch { _loadingErrorEvent.value = it.message }
-                .collect { _carsListState.value = it }
+                .collect { _deviceListState.value = it }
+        }
+    }
+
+    fun deleteDevice(device: Device) {
+        viewModelScope.launch(Dispatchers.Main) {
+            flow { emit(deviceInteractor.deleteDevice(device.id)) }
+                .flowOn(Dispatchers.IO)
+                .onCompletion { _loadingProgressEvent.value = false }
+                .catch { _loadingErrorEvent.value = it.message }
+                .collect { getDevices(false) }
+        }
+    }
+
+    fun updateDevice(device: Device) {
+        viewModelScope.launch(Dispatchers.Main) {
+            flow { emit(deviceInteractor.updateDevice(device)) }
+                .flowOn(Dispatchers.IO)
+                .onCompletion { _loadingProgressEvent.value = false }
+                .catch { _loadingErrorEvent.value = it.message }
+                .collect { }
         }
     }
 }

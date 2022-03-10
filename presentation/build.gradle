@@ -80,6 +80,7 @@ dependencies {
     /* UI */
     implementation lib.civ
     implementation lib.seekbar
+    implementation lib.flexbox
 
     /* Tools */
     coreLibraryDesugaring lib.desugaring

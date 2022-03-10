@@ -2,6 +2,7 @@ package com.example.template.common.android.ext.view
 
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -147,4 +148,28 @@ fun RecyclerView.scrollToPosition(position: Int, onScrolled: () -> Unit) {
     }
     addOnScrollListener(listener)
     scrollToPosition(position)
+}
+
+
+fun <T> RecyclerView.Adapter<*>.autoNotify(
+    oldList: List<T>,
+    newList: List<T>,
+    compare: (T, T) -> Boolean
+) {
+    val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return compare(oldList[oldItemPosition], newList[newItemPosition])
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return compare(oldList[oldItemPosition], newList[newItemPosition])
+        }
+
+        override fun getOldListSize() = oldList.size
+
+        override fun getNewListSize() = newList.size
+    })
+
+    diff.dispatchUpdatesTo(this)
 }

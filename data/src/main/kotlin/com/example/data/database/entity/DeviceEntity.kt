@@ -21,6 +21,6 @@ data class DeviceEntity(
     @ColumnInfo(name = DatabaseProtocol.DeviceTable.COLUMN_POSITION)
     val position: Int? = null,
     @ColumnInfo(name = DatabaseProtocol.DeviceTable.COLUMN_TEMPERATURE)
-    val temperature: Int? = null
+    val temperature: Double? = null
 
 )

@@ -13,7 +13,6 @@ import androidx.viewbinding.ViewBinding
 import com.example.core.common.safeCast
 import com.example.core.logger.logger
 import com.example.presentation.R
-import com.example.template.common.android.ContextWrapper
 import com.example.template.common.android.delegate.DialogDelegate
 import com.example.template.common.android.delegate.KeyboardDelegate
 import com.example.template.common.android.ext.view.setMarginExtra
@@ -43,7 +42,6 @@ abstract class BaseFragment : ScopeFragment, NestedInflater {
 
     abstract val loggerTag: String
     protected open val log by lazy { logger(loggerTag) }
-    protected val contextWrapper: ContextWrapper get() = ContextWrapper(this)
     protected val baseActivity: BaseActivity get() = activity?.safeCast<BaseActivity>()!!
 
     /* MVVM */
