@@ -19,7 +19,7 @@
         android:id="@+id/deviceDetailsFragment"
         android:name="com.example.template.ui.pages.details.DeviceDetailsFragment"
         android:label="deviceDetailsFragment"
-        tools:layout="@layout/fragment_template_details">
+        tools:layout="@layout/fragment_device_details">
         <argument
             android:name="device"
             app:argType="com.example.domain.model.Device"

@@ -27,6 +27,7 @@ ext.versions = [
     gson             : "2.9.0",
     room              : "2.3.0",
     civ              : "3.1.0",
+    seekbar           : "1.2.1",
 ]
 
 ext.plugin = [
@@ -83,5 +84,5 @@ ext.lib = [
 
     /* UI */
     civ                         : "de.hdodenhof:circleimageview:$versions.civ",
-
+    seekbar                     : "com.github.5hahryar:AirBar:$versions.seekbar"
 ]

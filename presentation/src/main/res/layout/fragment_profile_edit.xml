@@ -19,9 +19,15 @@
             android:layout_gravity="center"
             android:background="@color/blue">
 
-            <include
-                android:id="@+id/toolbar"
-                layout="@layout/content_toolbar_text" />
+            <ImageView
+                android:id="@+id/back"
+                style="@style/imgStyle"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white"
+                tools:ignore="ContentDescription" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img"

@@ -29,4 +29,3 @@ ij_kotlin_import_nested_classes = false
 # noinspection EditorConfigKeyCorrectness
 disabled_rules = experimental:annotation, filename
 
-# TODO arch: can we enable trailing comma by default from here?

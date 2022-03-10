@@ -64,7 +64,7 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
                 viewModel.saveUser()
                 navigator.back()
             }
-            toolbar.back.setOnClickListener { navigator.back() }
+            back.setOnClickListener { navigator.back() }
         }
     }
 

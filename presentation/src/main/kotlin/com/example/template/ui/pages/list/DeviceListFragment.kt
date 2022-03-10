@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.example.domain.model.Device
+import com.example.presentation.R
 import com.example.presentation.databinding.FragmentDeviceListBinding
 import com.example.template.common.BaseFragment
 import com.example.template.common.arch.viewbinding.LoadingView
@@ -19,6 +20,7 @@ class DeviceListFragment : BaseFragment(), LoadingView {
 
     private val adapter: DevicesAdapter by lazy {
         DevicesAdapter { navigator.openDetails(it) }
+        // todo delete
     }
 
     override fun onApplyScreenInsets() {
@@ -36,16 +38,24 @@ class DeviceListFragment : BaseFragment(), LoadingView {
 
     override fun observeLiveData() {
         super.observeLiveData()
-        viewModel.deviceListState.observe(viewLifecycleOwner, observeCarsListState())
+        viewModel.deviceListState.observe(viewLifecycleOwner, observeDeviceListState())
         viewModel.loadingProgressEvent.observe(viewLifecycleOwner, observeLoadingProgressEvent())
         viewModel.loadingErrorEvent.observe(viewLifecycleOwner, observeLoadingErrorEvent())
     }
 
-    private fun observeCarsListState(): Observer<List<Device>> = Observer { showCars(it) }
+    private fun observeDeviceListState(): Observer<List<Device>> = Observer { showData(it) }
     private fun observeLoadingProgressEvent(): Observer<Boolean> = Observer { showLoadingIf(it) }
     private fun observeLoadingErrorEvent(): Observer<String?> = Observer { showError(it) }
 
-    private fun showCars(list: List<Device>) {
+    private fun showData(list: List<Device>) {
         adapter.updateItems(list)
+    }
+
+    private fun deleteDevice(device: Device) {
+        dialogDelegate?.showYesNoDialog(
+            title = getString(R.string.delete_title),
+            message = getString(R.string.delete_message),
+//            yesAction = { viewModel.deleteDetails() }
+        )
     }
 }

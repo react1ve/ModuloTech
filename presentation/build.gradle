@@ -79,6 +79,7 @@ dependencies {
 
     /* UI */
     implementation lib.civ
+    implementation lib.seekbar
 
     /* Tools */
     coreLibraryDesugaring lib.desugaring

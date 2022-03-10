@@ -12,16 +12,6 @@
     <string name="error_connectivity">No network connection</string>
 
     <!-- CAR DETAILS -->
-    <string name="car_details_title">Car:</string>
-    <string name="car_details_brand">Brand:</string>
-    <string name="car_details_model">Model:</string>
-    <string name="car_details_color">Color:</string>
-    <string name="car_details_delete">Remove</string>
-    <string name="car_details_brand_hint">Renault</string>
-    <string name="car_details_model_hint">Megane</string>
-    <string name="car_details_color_hint">Green</string>
-    <string name="car_details_delete_title">Remove</string>
-    <string name="car_details_delete_message">Are you sure?</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="date_of_birth">Date of birth</string>
@@ -35,4 +25,12 @@
     <string name="cantonment">Cantonment</string>
     <string name="just_updated">Just Updated</string>
     <string name="_28_c">28°c</string>
+    <string name="_37_c">37°c Outside</string>
+    <string name="c">%d°c</string>
+    <string name="turbo_mode">Turbo mode</string>
+    <string name="set_timer">Set timer</string>
+    <string name="cooling_mode">Cooling mode</string>
+    <string name="delete_title">Delete</string>
+    <string name="delete_message">Are you sure?</string>
+
 </resources>
