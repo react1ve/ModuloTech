@@ -10,6 +10,7 @@ import com.example.presentation.databinding.FragmentDeviceDetailsBinding
 import com.example.template.common.BaseFragment
 import com.example.template.common.android.ext.view.onProgressChanged
 import com.example.template.common.navigation.BackListener
+import com.shahryar.airbar.AirBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.math.RoundingMode
@@ -57,6 +58,7 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
                 }
             }
             progressBar.onProgressChanged { progress ->
+                binding.ruler.progress = progress.toFloat()
                 device.let {
                     when (it) {
                         is Device.Light -> {
@@ -94,7 +96,7 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
                     is Device.Heater -> {
                         initialValue.text = getString(R.string.c, it.temperature?.formatDecimalPoint().toString())
                         current.text = getString(R.string.c, it.temperature?.formatDecimalPoint().toString())
-                        setProgressMinMax(14, 56)
+                        setProgressMinMax(7, 28)
                         setPowerMode(it.isChecked())
                     }
                     is Device.RollerShutter -> {

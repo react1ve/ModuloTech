@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import com.example.presentation.R
 
 class LineRulerView : View {
     private var paint: Paint? = null
@@ -18,11 +19,20 @@ class LineRulerView : View {
     private var viewWidth = 0
     private var valueMultiple = 1
 
+    var progress: Float = MIN_DATA
+        set(value) {
+            field = if (value in MIN_DATA..MAX_DATA) value else MIN_DATA
+            invalidate()
+        }
+
     private var displayNumberType = 1
     private var valueTypeMultiple = 4
     private val longHeightRatio = 4
     private val shortHeightRatio = 3
     private val baseHeightRatio = 3
+
+    private val selectedColor = R.color.line_ruler_selected_color
+    private val unselectedColor = R.color.line_ruler_unselected_color
 
     constructor(context: Context) : super(context) {
         init()
@@ -48,7 +58,7 @@ class LineRulerView : View {
 
     private fun init() {
         paint = Paint().apply {
-            color = Color.parseColor("#009FE7")
+            color = context.getColor(unselectedColor)
             strokeWidth = 5f
             isAntiAlias
             style = Paint.Style.STROKE
@@ -79,6 +89,7 @@ class LineRulerView : View {
         canvas.drawLine(0f, 0f, (viewWidth / longHeightRatio * baseHeightRatio).toFloat(), 0f, paint!!)
         var i = 1
         while (i < MAX_DATA - MIN_DATA) {
+            paint?.color = context.getColor(if ((MAX_DATA - MIN_DATA-i) < progress) selectedColor else unselectedColor)
             if (displayNumberType == DISPLAY_NUMBER_TYPE_MULTIPLE) {
                 if ((i + MIN_DATA).toInt() * valueMultiple % valueTypeMultiple == 0) {
                     canvas.drawLine(
