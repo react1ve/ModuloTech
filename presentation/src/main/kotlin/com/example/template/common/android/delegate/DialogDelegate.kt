@@ -32,7 +32,7 @@ class DialogDelegate(
         showDialog(builder.create())
     }
 
-    fun showYesNoDialog(
+    fun showOkCancelDialog(
         title: String? = null,
         message: String = "",
         yes: String? = null,

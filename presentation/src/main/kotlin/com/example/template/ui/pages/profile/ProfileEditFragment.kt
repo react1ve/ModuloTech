@@ -133,13 +133,16 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
     }
 
     private fun Long.formatUserDate() = try {
-        SimpleDateFormat(ProfileViewModel.USER_DATE_FORMAT, Locale.US).format(this)
+        SimpleDateFormat(ProfileViewModel.USER_DATE_FORMAT, Locale.getDefault()).format(this)
     } catch (e: Exception) {
         ""
     }
 
     private fun String.parseUserDate() =
-        if (this.isNotBlank()) SimpleDateFormat(ProfileViewModel.USER_DATE_FORMAT, Locale.US).parse(this)!!.time
+        if (this.isNotBlank()) SimpleDateFormat(
+            ProfileViewModel.USER_DATE_FORMAT,
+            Locale.getDefault()
+        ).parse(this)!!.time
         else 0
 
     private fun EditText.validateField(profileField: ProfileField) {

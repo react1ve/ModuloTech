@@ -26,6 +26,7 @@ class ProfileViewModel(
 
     companion object {
         const val USER_DATE_FORMAT = "dd-MM-yyyy"
+        const val MIN_INPUT_REQUIREMENT_LENGTH = 3
     }
 
     override val tag: String get() = "ListViewModel"
@@ -127,7 +128,8 @@ class ProfileViewModel(
     fun onTextChanged(text: String, inputType: ProfileField) {
         when {
             text.isBlank() -> _profileTextState.value = Pair(ProfileTextState.TextEmpty, inputType)
-            text.length < 3 -> _profileTextState.value = Pair(ProfileTextState.TextTooShort, inputType)
+            text.length < MIN_INPUT_REQUIREMENT_LENGTH -> _profileTextState.value =
+                Pair(ProfileTextState.TextTooShort, inputType)
             else -> _profileTextState.value = Pair(ProfileTextState.TextOk, inputType)
         }
     }

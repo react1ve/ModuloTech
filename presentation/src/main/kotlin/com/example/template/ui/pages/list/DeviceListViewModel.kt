@@ -7,6 +7,7 @@ import com.example.domain.interactor.DeviceInteractor
 import com.example.domain.model.Device
 import com.example.template.common.arch.MvvmViewModel
 import com.example.template.common.arch.SingleLiveData
+import com.example.template.ui.pages.list.filter.Filter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -24,6 +25,10 @@ class DeviceListViewModel(
 
     private val _deviceListState = MutableLiveData<List<Device>>()
     val deviceListState: LiveData<List<Device>> = _deviceListState
+    private val _filterListState = SingleLiveData<List<Filter>>()
+    val filterListState: SingleLiveData<List<Filter>> = _filterListState
+    private val _filteredDevices = MutableLiveData<List<Device>>()
+    val filteredDevices: LiveData<List<Device>> = _filteredDevices
     private val _loadingProgressEvent = SingleLiveData<Boolean>()
     val loadingProgressEvent: LiveData<Boolean> = _loadingProgressEvent
     private val _loadingErrorEvent = SingleLiveData<String?>()
@@ -34,6 +39,7 @@ class DeviceListViewModel(
         getDevices()
     }
 
+    private var deviceList = listOf<Device>()
     private fun getDevices(showLoading: Boolean = true) {
         viewModelScope.launch(Dispatchers.Main) {
             flow { emit(deviceInteractor.getDevices()) }
@@ -44,6 +50,7 @@ class DeviceListViewModel(
                     _loadingProgressEvent.value = false
                 }
                 .collect {
+                    deviceList = it
                     _deviceListState.value = it
                     if (it.isEmpty()) {
                         initialize()
@@ -81,7 +88,16 @@ class DeviceListViewModel(
                 .flowOn(Dispatchers.IO)
                 .onCompletion { _loadingProgressEvent.value = false }
                 .catch { _loadingErrorEvent.value = it.message }
-                .collect { }
+                .collect()
         }
+    }
+
+    fun openFilter() {
+        _filterListState.value = deviceList.map { Filter(it.productType.title, false) }.distinct()
+    }
+
+    fun filterDevices(filter: List<String>?) {
+        _filteredDevices.value =
+            if (filter == null) deviceList else deviceList.filter { it.productType.title in filter }
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ModuloTech</string>
+    <string name="app_name" translatable="false">ModuloTech</string>
 
     <!-- COMMON -->
     <string name="ok">OK</string>
@@ -42,4 +42,7 @@
     <string name="app_language">Application language</string>
     <string name="french">French</string>
     <string name="english">English</string>
+    <string name="language">Language</string>
+    <string name="darkmode">Darkmode</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

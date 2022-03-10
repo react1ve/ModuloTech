@@ -27,7 +27,6 @@ class DeviceListFragment : BaseFragment(), LoadingView {
         }, { device -> viewModel.updateDevice(device) })
     }
 
-    private var deviceList = listOf<Device>()
     override fun onApplyScreenInsets() {
         super.onApplyScreenInsets()
         binding.listLayout.applyStatusBarInsetWithPadding()
@@ -43,15 +42,14 @@ class DeviceListFragment : BaseFragment(), LoadingView {
 
     override fun initClicks() {
         binding {
-            filter.setOnClickListener { openFilterBottomSheet() }
+            filter.setOnClickListener { viewModel.openFilter() }
             settings.setOnClickListener { navigator.openSettings() }
         }
     }
 
-    private fun openFilterBottomSheet() {
-        val bsh = FilterBottomSheet(deviceList.map { Filter(it.productType.title, false) }.distinct()) { filter ->
-            if (filter == null) adapter.setData(deviceList)
-            else adapter.setData(deviceList.filter { it.productType.title in filter })
+    private fun openFilterBottomSheet(filters: List<Filter>) {
+        val bsh = FilterBottomSheet(filters) { filter ->
+            viewModel.filterDevices(filter)
         }
         if (!bsh.isAdded) bsh.show(childFragmentManager, "FilterBottomSheet")
     }
@@ -61,19 +59,22 @@ class DeviceListFragment : BaseFragment(), LoadingView {
         viewModel.deviceListState.observe(viewLifecycleOwner, observeDeviceListState())
         viewModel.loadingProgressEvent.observe(viewLifecycleOwner, observeLoadingProgressEvent())
         viewModel.loadingErrorEvent.observe(viewLifecycleOwner, observeLoadingErrorEvent())
+        viewModel.filterListState.observe(viewLifecycleOwner, observeFilterListState())
+        viewModel.filteredDevices.observe(viewLifecycleOwner, observeFilteredDeviceListState())
     }
 
-    private fun observeDeviceListState(): Observer<List<Device>> = Observer { showData(it) }
+    private fun observeFilteredDeviceListState(): Observer<List<Device>> = Observer { showData(it) }
     private fun observeLoadingProgressEvent(): Observer<Boolean> = Observer { showLoadingIf(it) }
     private fun observeLoadingErrorEvent(): Observer<String?> = Observer { showError(it) }
+    private fun observeDeviceListState(): Observer<List<Device>> = Observer { showData(it) }
+    private fun observeFilterListState(): Observer<List<Filter>> = Observer { openFilterBottomSheet(it) }
 
     private fun showData(list: List<Device>) {
-        deviceList = list
         adapter.setData(list)
     }
 
     private fun deleteDevice(device: Device) {
-        dialogDelegate?.showYesNoDialog(
+        dialogDelegate?.showOkCancelDialog(
             title = getString(R.string.delete_title),
             message = getString(R.string.delete_message),
             yesAction = { viewModel.deleteDevice(device) }
