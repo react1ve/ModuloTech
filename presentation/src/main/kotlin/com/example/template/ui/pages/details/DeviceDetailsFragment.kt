@@ -12,6 +12,8 @@ import com.example.template.common.android.ext.view.onProgressChanged
 import com.example.template.common.navigation.BackListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class DeviceDetailsFragment : BaseFragment(), BackListener {
 
@@ -62,8 +64,8 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
                             viewModel.setIntensity(progress.toInt())
                         }
                         is Device.Heater -> {
-                            current.text = getString(R.string.c, it.temperature)
-                            viewModel.setTemperature(progress)
+                            current.text = getString(R.string.c, it.temperature.toString())
+                            viewModel.setTemperature((progress / 2).formatDecimalPoint())
                         }
                         is Device.RollerShutter -> {
                             current.text = it.position.toString()
@@ -86,24 +88,26 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
                     is Device.Light -> {
                         initialValue.text = it.intensity.toString()
                         current.text = it.intensity.toString()
-
+                        setProgressMinMax(0, 100)
                         setPowerMode(it.isChecked())
                     }
                     is Device.Heater -> {
-                        initialValue.text = getString(R.string.c, it.temperature)
-                        current.text = getString(R.string.c, it.temperature)
-
+                        initialValue.text = getString(R.string.c, it.temperature?.formatDecimalPoint().toString())
+                        current.text = getString(R.string.c, it.temperature?.formatDecimalPoint().toString())
+                        setProgressMinMax(14, 56)
                         setPowerMode(it.isChecked())
                     }
                     is Device.RollerShutter -> {
                         initialValue.text = it.position.toString()
                         current.text = it.position.toString()
                         binding.power.isVisible = false
+                        setProgressMinMax(0, 100)
                     }
                 }
             }
         }
     }
+
 
     private fun setProgressMinMax(min: Int, max: Int) {
         binding {
@@ -126,6 +130,13 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
     override fun observeLiveData() {
         super.observeLiveData()
         viewModel.updateErrorEvent.observe(viewLifecycleOwner, this::showError)
+    }
+
+    private fun Double?.formatDecimalPoint(): Double {
+        val df = DecimalFormat("#.#").apply {
+            roundingMode = RoundingMode.FLOOR
+        }
+        return df.format(this).toDouble()
     }
 
 }

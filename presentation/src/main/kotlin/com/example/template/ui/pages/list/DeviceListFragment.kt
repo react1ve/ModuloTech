@@ -47,7 +47,8 @@ class DeviceListFragment : BaseFragment(), LoadingView {
 
     private fun openFilterBottomSheet() {
         val bsh = FilterBottomSheet(deviceList.map { Filter(it.productType.title, false) }.distinct()) { filter ->
-            adapter.setData(deviceList.filter { it.productType.title == filter?.name })
+            if (filter == null) adapter.setData(deviceList)
+            else adapter.setData(deviceList.filter { it.productType.title in filter })
         }
         if (!bsh.isAdded) bsh.show(childFragmentManager, "FilterBottomSheet")
     }

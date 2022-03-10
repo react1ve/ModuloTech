@@ -12,7 +12,7 @@ import com.google.android.flexbox.JustifyContent
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FilterBottomSheet(
-    private val filterList: List<Filter>, private val filterListener: (selectedId: Filter?) -> Unit
+    private val filterList: List<Filter>, private val filterListener: (selectedIds: List<String>?) -> Unit
 ) : BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetFilterBinding
@@ -36,18 +36,17 @@ class FilterBottomSheet(
             filterListener.invoke(null)
         }
         binding.apply.setOnClickListener {
-            filterListener.invoke(selected)
+            filterListener.invoke(filterList.filter { it.isSelected }.map { it.name })
             dismiss()
         }
     }
 
-    private var selected: Filter? = null
     private lateinit var adapter: FilterAdapter
     private fun initRecycler() {
         adapter = FilterAdapter { chosen ->
-            filterList.forEach { it.isSelected = false }
-            selected = filterList.firstOrNull { it.name == chosen.name }
-            selected?.isSelected = true
+            filterList.firstOrNull { it.name == chosen.name }?.let {
+                it.isSelected = !it.isSelected
+            }
             adapter.setItems(filterList)
         }.apply {
             setItems(filterList)

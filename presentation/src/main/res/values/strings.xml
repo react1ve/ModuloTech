@@ -26,7 +26,7 @@
     <string name="just_updated">Just Updated</string>
     <string name="_28_c">28°c</string>
     <string name="_37_c">37°c Outside</string>
-    <string name="c">%d°c</string>
+    <string name="c">%s°c</string>
     <string name="turbo_mode">Turbo mode</string>
     <string name="set_timer">Set timer</string>
     <string name="cooling_mode">Cooling mode</string>
