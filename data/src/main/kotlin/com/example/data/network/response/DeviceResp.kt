@@ -23,7 +23,7 @@ internal sealed class DeviceResp(
         @SerializedName("mode")
         val mode: String,
         @SerializedName("temperature")
-        val temperature: Int
+        val temperature: Number
     ) : DeviceResp()
 
     class RollerShutterResp(

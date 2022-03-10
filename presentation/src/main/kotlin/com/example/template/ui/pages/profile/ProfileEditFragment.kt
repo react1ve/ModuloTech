@@ -152,5 +152,11 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
             false
         }
     }
+
+    override fun onBackPressed(): Boolean {
+        navigator.back()
+        return true
+    }
+
 }
 

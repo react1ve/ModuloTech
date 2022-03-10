@@ -9,9 +9,8 @@ import com.example.template.common.arch.SingleLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
@@ -21,36 +20,42 @@ class DetailsViewModel(
 
     override val tag: String = "DetailsViewModel"
 
-    private val _updateCompletedEvent = SingleLiveData<Boolean>()
-    val updateCompletedEvent: LiveData<Boolean> get() = _updateCompletedEvent
-
     private val _updateErrorEvent = SingleLiveData<String?>()
     val updateErrorEvent: LiveData<String?> get() = _updateErrorEvent
 
-    fun deleteDetails() = deleteCar(device.id)
-
-    private fun deleteCar(id: Int) {
+    fun updateDevice() {
         viewModelScope.launch(Dispatchers.Main) {
-            flowOf(deviceInteractor.deleteDevice(id))
+            flow { emit(deviceInteractor.updateDevice(device)) }
                 .flowOn(Dispatchers.IO)
-                .onCompletion { _updateCompletedEvent.value = true }
                 .catch { _updateErrorEvent.value = it.message }
                 .collect()
         }
     }
-/*
-    private fun updateCar() {
-        viewModelScope.launch(Dispatchers.Main) {
-            flow {
-                currentStateEntity.mutableCar.asCar()
-                    ?.let { emit(deviceInteractor.updateDevice(it)) }
-                    ?: throw Exception(resourceProvider.getString(R.string.car_details_validation_error))
-            }
-                .flowOn(Dispatchers.IO)
-                .onCompletion { _updateCompletedEvent.value = true }
-                .catch { _updateErrorEvent.value = it.message }
-                .collect()
+
+    fun setIntensity(value: Int) {
+        if (device is Device.Light) {
+            device.intensity = value
         }
-    }*/
+    }
+
+    fun setTemperature(value: Double) {
+        if (device is Device.Heater) {
+            device.temperature = value
+        }
+    }
+
+    fun setPosition(value: Int) {
+        if (device is Device.RollerShutter) {
+            device.position = value
+        }
+    }
+
+    fun setMode(on: Boolean) {
+        when (device) {
+            is Device.Light -> device.setChecked(on)
+            is Device.Heater -> device.setChecked(on)
+            else -> {}
+        }
+    }
 
 }

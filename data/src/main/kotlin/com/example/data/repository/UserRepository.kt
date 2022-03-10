@@ -26,5 +26,17 @@ internal class UserRepository(
         } ?: getUser()
     }
 
+    override suspend fun setAppTheme(theme: Int) {
+        preferencesManager.theme = theme
+    }
+
+    override suspend fun getAppTheme(): Int {
+        return preferencesManager.theme
+    }
+
+    override suspend fun setAppLang(lang: String) {
+        preferencesManager.lang = lang
+    }
+
     override fun logOut() = preferencesManager.deleteAll()
 }

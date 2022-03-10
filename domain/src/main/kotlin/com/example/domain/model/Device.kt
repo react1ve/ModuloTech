@@ -10,6 +10,7 @@ sealed class Device(
 
     companion object {
         protected const val on = "ON"
+        protected const val off = "OFF"
     }
 
     data class Light(
@@ -17,14 +18,17 @@ sealed class Device(
         override val deviceName: String,
         override val productType: DeviceType,
 
-        val mode: String?,
-        val intensity: Int?,
+        var mode: String?,
+        var intensity: Int?,
     ) : Device(
         id = id,
         deviceName = deviceName,
         productType = productType
     ) {
         fun isChecked() = mode == on
+        fun setChecked(checked: Boolean) {
+            mode = if (checked) on else off
+        }
     }
 
     data class Heater(
@@ -32,14 +36,17 @@ sealed class Device(
         override val deviceName: String,
         override val productType: DeviceType,
 
-        val mode: String?,
-        val temperature: Int?,
+        var mode: String?,
+        var temperature: Double?,
     ) : Device(
         id = id,
         deviceName = deviceName,
         productType = productType
     ) {
         fun isChecked() = mode == on
+        fun setChecked(checked: Boolean) {
+            mode = if (checked) on else off
+        }
     }
 
     data class RollerShutter(
@@ -47,7 +54,7 @@ sealed class Device(
         override val deviceName: String,
         override val productType: DeviceType,
 
-        val position: Int?,
+        var position: Int?,
     ) : Device(
         id = id,
         deviceName = deviceName,

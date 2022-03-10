@@ -10,7 +10,13 @@ internal object DeviceModelMapper {
         val type: DeviceType = fromNetworkToType(resp)
         return when (resp) {
             is DeviceResp.LightResp -> Device.Light(resp.id, resp.deviceName, type, resp.mode, resp.intensity)
-            is DeviceResp.HeaterResp -> Device.Heater(resp.id, resp.deviceName, type, resp.mode, resp.temperature)
+            is DeviceResp.HeaterResp -> Device.Heater(
+                resp.id,
+                resp.deviceName,
+                type,
+                resp.mode,
+                resp.temperature.toDouble()
+            )
             is DeviceResp.RollerShutterResp -> Device.RollerShutter(resp.id, resp.deviceName, type, resp.position)
         }
     }

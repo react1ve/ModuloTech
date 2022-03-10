@@ -104,4 +104,11 @@ class ProfileViewModel(
         user = user?.copy(address = Address(country = country, city = city, postalCode = postalCode, street = street))
     }
 
+    fun setAppTheme(themeMode: Int) {
+        viewModelScope.launch { userInteractor.setAppTheme(themeMode) }
+    }
+
+    fun setAppLang(lang: String) {
+        viewModelScope.launch { userInteractor.setAppLang(lang) }
+    }
 }

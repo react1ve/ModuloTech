@@ -10,5 +10,11 @@ interface UserRepositoryApi {
 
     suspend fun initUser(): User?
 
+    suspend fun setAppTheme(theme: Int)
+
+    suspend fun getAppTheme(): Int
+
+    suspend fun setAppLang(lang: String)
+
     fun logOut()
 }

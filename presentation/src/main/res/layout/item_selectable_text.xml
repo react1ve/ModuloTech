@@ -11,7 +11,7 @@
     android:maxLines="1"
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
-    tools:text="Status"
     android:textColor="@drawable/selectable_text_color"
     android:textSize="14sp"
-    android:textStyle="bold" />
+    android:textStyle="bold"
+    tools:text="Status" />

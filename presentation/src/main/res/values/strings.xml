@@ -26,7 +26,7 @@
     <string name="just_updated">Just Updated</string>
     <string name="_28_c">28°c</string>
     <string name="_37_c">37°c Outside</string>
-    <string name="c">%d°c</string>
+    <string name="c">%s°c</string>
     <string name="turbo_mode">Turbo mode</string>
     <string name="set_timer">Set timer</string>
     <string name="cooling_mode">Cooling mode</string>
@@ -34,6 +34,12 @@
     <string name="delete_message">Are you sure?</string>
     <string name="apply">Apply</string>
     <string name="reset">Reset</string>
-    <string name="filter">Filter</string>
-
+    <string name="filter">Filter Devices</string>
+    <string name="app_theme">Application Theme</string>
+    <string name="theme_light">Light theme</string>
+    <string name="theme_dark">Dark theme</string>
+    <string name="theme_system">System theme</string>
+    <string name="app_language">Application language</string>
+    <string name="french">French</string>
+    <string name="english">English</string>
 </resources>
