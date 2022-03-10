@@ -78,7 +78,7 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
     private fun setUserData() {
         binding {
             viewModel.setUserFirstName(firstName.text.toString())
-            viewModel.setUserLastName(firstName.text.toString())
+            viewModel.setUserLastName(lastName.text.toString())
             viewModel.setUserDateOfBirth(dateOfBirth.text.toString().parseUserDate())
             viewModel.setUserAddress(
                 country.text.toString(),
