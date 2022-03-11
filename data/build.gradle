@@ -31,17 +31,14 @@ android {
         dev {
             dimension "api"
             buildConfigField("String", "API_ROOT", '"' + config.api.api_root_dev + '"')
-            buildConfigField("String", "API_KEY", '"' + config.api_dev_key + '"')
         }
         stage {
             dimension "api"
             buildConfigField("String", "API_ROOT", '"' + config.api.api_root_stage + '"')
-            buildConfigField("String", "API_KEY", '"' + config.api_stage_key + '"')
         }
         production {
             dimension "api"
             buildConfigField("String", "API_ROOT", '"' + config.api.api_root_prod + '"')
-            buildConfigField("String", "API_KEY", '"' + config.api_prod_key + '"')
         }
     }
 

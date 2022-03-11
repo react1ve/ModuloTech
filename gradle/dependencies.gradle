@@ -1,42 +1,42 @@
 apply from: "gradle/build-versions.gradle"
 ext.versions = [
     /*GRADLE DEPENDENCIES*/
-    androidPlugin     : "7.0.2",
-    kotlinPlugin      : "1.5.31",
-    ktlintPlugin      : "3.6.0",
+    androidPlugin       : "7.0.2",
+    kotlinPlugin        : "1.6.10",
+    ktlintPlugin        : "3.6.0",
 
     /*APPLICATION DEPENDENCIES*/
-    kotlinStd         : "1.5.31",
-    coroutines        : "1.5.2",
-    androidXCore      : "1.6.0",
-    androidXAppCompat : "1.3.1",
-    androidXRecycler  : "1.2.1",
-    androidXDesign    : "1.4.0",
-    androidXConstraint: "2.1.1",
-    androidXMultiDex  : "2.0.1",
-    androidLifecycle  : "2.3.1",
-    androidDataBinding: "7.0.3",
-    androidNavigation : "2.3.5",
-    slf4j             : "1.7.28",
-    logback           : "1.1.1-6",
-    okHttp            : "4.9.0",
-    chucker            : "3.5.2",
-    retrofit2         : "2.9.0",
-    koin              : "3.1.2",
-    desugaring        : "1.1.5",
-    gson             : "2.9.0",
-    room              : "2.3.0",
-    civ              : "3.1.0",
-    seekbar           : "1.2.1",
-    flexbox           : "3.0.0",
-    lang           : "1.3.0",
+    kotlinStd           : "1.6.10",
+    coroutines          : "1.5.2",
+    androidXCore        : "1.6.0",
+    androidXAppCompat   : "1.3.1",
+    androidXRecycler    : "1.2.1",
+    androidXDesign      : "1.4.0",
+    androidXConstraint  : "2.1.1",
+    androidXMultiDex    : "2.0.1",
+    androidLifecycle    : "2.3.1",
+    androidDataBinding  : "7.0.3",
+    androidNavigation   : "2.3.5",
+    slf4j               : "1.7.28",
+    logback             : "1.1.1-6",
+    okHttp              : "4.9.0",
+    chucker             : "3.5.2",
+    retrofit2            : "2.9.0",
+    koin                : "3.2.0-beta-1",
+    desugaring          : "1.1.5",
+    gson                : "2.9.0",
+    room                : "2.4.2",
+    civ                 : "3.1.0",
+    seekbar             : "1.2.1",
+    flexbox              : "3.0.0",
+    lang                : "1.3.0",
 ]
 
 ext.plugin = [
-    android         : "com.android.tools.build:gradle:$versions.androidPlugin",
-    androidSafeArgs : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidNavigation",
-    kotlin          : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlinPlugin",
-    ktlint          : "org.jmailen.gradle:kotlinter-gradle:$versions.ktlintPlugin",
+    android             : "com.android.tools.build:gradle:$versions.androidPlugin",
+    androidSafeArgs     : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidNavigation",
+    kotlin              : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlinPlugin",
+    ktlint              : "org.jmailen.gradle:kotlinter-gradle:$versions.ktlintPlugin",
 ]
 
 ext.lib = [
@@ -68,9 +68,9 @@ ext.lib = [
     /* Network */
     okHttp3                  : "com.squareup.okhttp3:okhttp:$versions.okHttp",
     okHttp3LoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
-    chucker                 : "com.github.chuckerteam.chucker:library:$versions.chucker",
-    retrofit2                : "com.squareup.retrofit2:retrofit:$versions.retrofit2",
-    gson                    : "com.squareup.retrofit2:converter-gson:$versions.gson",
+    chucker                  : "com.github.chuckerteam.chucker:library:$versions.chucker",
+    retrofit2                 : "com.squareup.retrofit2:retrofit:$versions.retrofit2",
+    gson                     : "com.squareup.retrofit2:converter-gson:$versions.gson",
 
     /* DI */
     koinCore                 : "io.insert-koin:koin-core:$versions.koin",
@@ -85,8 +85,8 @@ ext.lib = [
     roomKt                   : "androidx.room:room-ktx:$versions.room",
 
     /* UI */
-    civ                         : "de.hdodenhof:circleimageview:$versions.civ",
-    seekbar                     : "com.github.5hahryar:AirBar:$versions.seekbar",
-    flexbox                     : "com.google.android.flexbox:flexbox:$versions.flexbox",
+    civ                      : "de.hdodenhof:circleimageview:$versions.civ",
+    seekbar                  : "com.github.5hahryar:AirBar:$versions.seekbar",
+    flexbox                   : "com.google.android.flexbox:flexbox:$versions.flexbox",
     lang                     : "com.github.YarikSOffice:lingver:$versions.lang"
 ]

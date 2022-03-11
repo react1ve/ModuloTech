@@ -120,10 +120,10 @@
 # To support Enum type of class members
 -keepclassmembers enum * { *; }
 
--keep class com.example.** { *; }
--keep class com.example.**.** { *; }
--keep class * extends com.example.data.database.deserializer.DeviceDeserializer
--keep class * extends com.example.serializer.TypeSerializer
+-keep class com.modulo.** { *; }
+-keep class com.modulo.**.** { *; }
+-keep class * extends com.modulo.data.database.deserializer.DeviceDeserializer
+-keep class * extends com.modulo.serializer.TypeSerializer
 
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
 # EnclosingMethod is required to use InnerClasses.

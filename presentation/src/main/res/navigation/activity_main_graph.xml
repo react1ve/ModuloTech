@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/deviceListFragment"
-        android:name="com.example.template.ui.pages.list.DeviceListFragment"
+        android:name="com.modulo.modulotest.ui.pages.list.DeviceListFragment"
         android:label="deviceListFragment"
         tools:layout="@layout/fragment_device_list">
         <action
-            android:id="@+id/action_templateListFragment_to_templateDetailsFragment"
+            android:id="@+id/action_deviceListFragment_to_deviceDetailsFragment"
             app:destination="@id/deviceDetailsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -23,23 +23,23 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"  />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/deviceDetailsFragment"
-        android:name="com.example.template.ui.pages.details.DeviceDetailsFragment"
+        android:name="com.modulo.modulotest.ui.pages.details.DeviceDetailsFragment"
         android:label="deviceDetailsFragment"
         tools:layout="@layout/fragment_device_details">
         <argument
             android:name="device"
-            app:argType="com.example.domain.model.Device"
+            app:argType="com.modulo.domain.model.Device"
             app:nullable="false" />
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.template.ui.pages.profile.ProfileFragment"
+        android:name="com.modulo.modulotest.ui.pages.profile.ProfileFragment"
         android:label="profileFragment"
         tools:layout="@layout/fragment_profile">
 
@@ -49,12 +49,12 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"  />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/profileEditFragment"
-        android:name="com.example.template.ui.pages.profile.ProfileEditFragment"
+        android:name="com.modulo.modulotest.ui.pages.profile.ProfileEditFragment"
         android:label="profileEditFragment"
         tools:layout="@layout/fragment_profile_edit">
 

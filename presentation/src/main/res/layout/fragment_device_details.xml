@@ -102,7 +102,7 @@
         app:layout_constraintTop_toTopOf="@id/progressBar"
         tools:ignore="UseCompatTextViewDrawableXml" />
 
-    <com.example.template.ui.custom.LineRulerView
+    <com.modulo.modulotest.ui.custom.LineRulerView
         android:id="@+id/ruler"
         android:layout_width="36dp"
         android:layout_height="0dp"
