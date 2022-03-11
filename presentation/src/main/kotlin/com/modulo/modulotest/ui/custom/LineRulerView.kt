@@ -1,26 +1,35 @@
 package com.modulo.modulotest.ui.custom
 
-import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import com.modulo.presentation.R
 
-class LineRulerView : View {
-    private var paint: Paint? = null
+class LineRulerView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) : View(context, attrs, defStyle) {
 
-    private var MAX_DATA = 100f
-    private var MIN_DATA = 0f
+    companion object {
+        private const val MAX_DATA = 100f
+        private const val MIN_DATA = 0f
+        const val DISPLAY_NUMBER_TYPE_MULTIPLE = 2
+
+    }
+
+
+    private var minValue = MIN_DATA
+    private var maxValue = MAX_DATA
     private var viewHeight = 0
     private var viewWidth = 0
     private var valueMultiple = 1
 
-    var progress: Float = MIN_DATA
+    var progress: Float = minValue
         set(value) {
-            field = if (value in MIN_DATA..MAX_DATA) value else MIN_DATA
+            field = if (value in minValue..maxValue) value else minValue
             invalidate()
         }
 
@@ -33,28 +42,11 @@ class LineRulerView : View {
     private val selectedColor = R.color.line_ruler_selected_color
     private val unselectedColor = R.color.line_ruler_unselected_color
 
-    constructor(context: Context) : super(context) {
+    init {
         init()
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        init()
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init()
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
-        context,
-        attrs,
-        defStyleAttr,
-        defStyleRes
-    ) {
-        init()
-    }
-
+    private lateinit var paint: Paint
     private fun init() {
         paint = Paint().apply {
             color = context.getColor(unselectedColor)
@@ -65,37 +57,28 @@ class LineRulerView : View {
         invalidate()
     }
 
-    fun setMaxValue(maxValue: Float): LineRulerView {
-        MAX_DATA = maxValue
-        return this
-    }
-
-    fun setMinValue(minValue: Float): LineRulerView {
-        MIN_DATA = minValue
-        return this
-    }
-
-    fun setMinMaxValue(minValue: Float, maxValue: Float): LineRulerView {
-        MIN_DATA = minValue
-        MAX_DATA = maxValue
-        return this
+    fun setMinMaxValue(minValue: Float, maxValue: Float) {
+        this.minValue = minValue
+        this.maxValue = maxValue
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
         viewHeight = measuredHeight
         viewWidth = measuredWidth
-        val viewInterval = viewHeight.toFloat() / (MAX_DATA - MIN_DATA)
+        val viewInterval = viewHeight.toFloat() / (maxValue - minValue)
         var i = 1
-        while (i < MAX_DATA - MIN_DATA) {
-            paint?.color = context.getColor(if ((MAX_DATA - MIN_DATA-i) < progress) selectedColor else unselectedColor)
+        while (i < maxValue - minValue) {
+            paint.color =
+                context.getColor(if ((maxValue - minValue - i) < progress) selectedColor else unselectedColor)
             if (displayNumberType == DISPLAY_NUMBER_TYPE_MULTIPLE) {
-                if ((i + MIN_DATA).toInt() * valueMultiple % valueTypeMultiple == 0) {
+                if ((i + minValue).toInt() * valueMultiple % valueTypeMultiple == 0) {
                     canvas.drawLine(
                         0f,
                         viewInterval * i,
                         (viewWidth / shortHeightRatio * baseHeightRatio).toFloat(),
                         viewInterval * i,
-                        paint!!
+                        paint
                     )
                 } else {
                     canvas.drawLine(
@@ -103,7 +86,7 @@ class LineRulerView : View {
                         viewInterval * i,
                         (viewWidth / longHeightRatio * baseHeightRatio).toFloat(),
                         viewInterval * i,
-                        paint!!
+                        paint
                     )
                 }
             } else {
@@ -113,7 +96,7 @@ class LineRulerView : View {
                         viewInterval * i,
                         (viewWidth / shortHeightRatio * baseHeightRatio).toFloat(),
                         viewInterval * i,
-                        paint!!
+                        paint
                     )
                 } else {
                     canvas.drawLine(
@@ -121,7 +104,7 @@ class LineRulerView : View {
                         viewInterval * i,
                         (viewWidth / longHeightRatio * baseHeightRatio).toFloat(),
                         viewInterval * i,
-                        paint!!
+                        paint
                     )
                 }
             }
@@ -132,12 +115,8 @@ class LineRulerView : View {
             viewHeight.toFloat(),
             (viewWidth / longHeightRatio * baseHeightRatio).toFloat(),
             viewHeight.toFloat(),
-            paint!!
+            paint
         )
         super.onDraw(canvas)
-    }
-
-    companion object {
-        const val DISPLAY_NUMBER_TYPE_MULTIPLE = 2
     }
 }

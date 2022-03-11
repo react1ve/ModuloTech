@@ -7,6 +7,6 @@ import com.modulo.domain.api.UserRepositoryApi
 import org.koin.dsl.module
 
 internal val repositoryModule = module {
-    single<DeviceRepositoryApi> { DeviceRepository(deviceDao = get(), gson = get(), api = get()) }
-    single<UserRepositoryApi> { UserRepository(preferencesManager = get(), gson = get(), api = get()) }
+    single<DeviceRepositoryApi> { DeviceRepository(deviceDao = get(), apiDataSource = get()) }
+    single<UserRepositoryApi> { UserRepository(preferencesManager = get(), apiDataSource = get()) }
 }

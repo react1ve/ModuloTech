@@ -9,7 +9,7 @@
         android:text="@string/app_theme" />
 
     <TextView
-        android:id="@+id/light"
+        android:id="@+id/lightTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -23,7 +23,7 @@
     <include layout="@layout/divider" />
 
     <TextView
-        android:id="@+id/dark"
+        android:id="@+id/darkTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -37,7 +37,7 @@
     <include layout="@layout/divider" />
 
     <TextView
-        android:id="@+id/system"
+        android:id="@+id/systemTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

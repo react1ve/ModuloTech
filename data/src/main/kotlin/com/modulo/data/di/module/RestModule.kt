@@ -8,6 +8,7 @@ import com.modulo.data.Constants.TIME_OUT
 import com.modulo.data.database.deserializer.DeviceDeserializer
 import com.modulo.data.network.api.DataApi
 import com.modulo.data.network.response.DeviceResp
+import com.modulo.data.preferences.SharedPreferencesManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -17,6 +18,9 @@ import java.util.concurrent.TimeUnit
 
 internal val restModule = module {
     single { provideGson() }
+
+    // Shared Preferences
+    single { SharedPreferencesManager(preferences = get(), gson = get()) }
 
     // Interceptor
     single { provideHttpLoggingInterceptor() }

@@ -1,15 +1,8 @@
 package com.modulo.data.di.module
 
-import com.modulo.data.preferences.SharedPreferencesManager
-import com.modulo.data.repository.BaseRepository
+import com.modulo.data.network.ApiDataSource
 import org.koin.dsl.module
 
 internal val dataSourceModule = module {
-    single { SharedPreferencesManager(preferences = get(), gson = get()) }
-    single {
-        BaseRepository(
-            gson = get(),
-            dataApi = get()
-        )
-    }
+    single { ApiDataSource(gson = get(), dataApi = get()) }
 }

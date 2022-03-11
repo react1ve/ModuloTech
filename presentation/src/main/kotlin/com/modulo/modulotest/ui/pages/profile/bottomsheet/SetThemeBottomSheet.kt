@@ -20,15 +20,15 @@ class SetThemeBottomSheet(private val listener: (themMode: Int) -> Unit) : Botto
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-            light.setOnClickListener {
+            lightTv.setOnClickListener {
                 dismiss()
                 listener(AppCompatDelegate.MODE_NIGHT_NO)
             }
-            dark.setOnClickListener {
+            darkTv.setOnClickListener {
                 dismiss()
                 listener(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            system.setOnClickListener {
+            systemTv.setOnClickListener {
                 dismiss()
                 listener(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             }

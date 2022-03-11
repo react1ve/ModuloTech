@@ -1,18 +1,16 @@
 package com.modulo.data.repository
 
-import com.google.gson.Gson
 import com.modulo.data.database.dao.DeviceDao
 import com.modulo.data.database.mapper.DeviceDBMapper
 import com.modulo.data.database.mapper.DeviceModelMapper
-import com.modulo.data.network.api.DataApi
+import com.modulo.data.network.ApiDataSource
 import com.modulo.domain.api.DeviceRepositoryApi
 import com.modulo.domain.model.Device
 
 internal class DeviceRepository(
     private val deviceDao: DeviceDao,
-    gson: Gson,
-    api: DataApi
-) : BaseRepository(gson, api), DeviceRepositoryApi {
+    private val apiDataSource: ApiDataSource
+) : DeviceRepositoryApi {
 
     override suspend fun getDevice(deviceId: Int): Device {
         return deviceDao.queryDevice(deviceId)
@@ -32,7 +30,7 @@ internal class DeviceRepository(
     }
 
     override suspend fun initDevices(): List<Device> {
-        return getData()?.let { response ->
+        return apiDataSource.getData()?.let { response ->
             response.devices.map {
                 deviceDao.insert(DeviceDBMapper.fromModelToEntity(DeviceModelMapper.fromNetworkToModel(it)))
             }

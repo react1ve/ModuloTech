@@ -13,7 +13,7 @@
     <!-- FONT REGULAR TEXT -->
 
     <style name="Text.FontRegular">
-        <item name="android:fontFamily">@string/roboto_regular</item>
+        <item name="android:fontFamily">@font/regular</item>
     </style>
 
     <style name="Text.FontRegular.Primary">
@@ -27,7 +27,7 @@
     <!-- FONT BOLD TEXT -->
 
     <style name="Text.FontBold">
-        <item name="android:fontFamily">@string/roboto_regular</item>
+        <item name="android:fontFamily">@font/regular</item>
         <item name="android:textStyle">bold</item>
     </style>
 

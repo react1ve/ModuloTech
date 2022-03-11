@@ -8,11 +8,11 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        /* DI */
-        initializeKoin()
-
         /* Multi Lang */
         initLingver()
+
+        /* DI */
+        initializeKoin()
     }
 
     private fun initLingver() {
