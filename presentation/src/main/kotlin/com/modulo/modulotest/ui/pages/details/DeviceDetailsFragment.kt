@@ -82,7 +82,7 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
     private fun setData() {
         device.let {
             binding {
-                title.text = it.deviceName
+                titleTv.text = it.deviceName
                 subtitle.text = it.productType.title
 
                 when (it) {

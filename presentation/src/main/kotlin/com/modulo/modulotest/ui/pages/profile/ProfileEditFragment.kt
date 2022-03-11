@@ -31,21 +31,21 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.save.disable()
+        binding.saveBtn.disable()
         handleTextChanges()
     }
 
     private fun handleTextChanges() {
         binding {
-            firstName.validateField(ProfileField.FIRST_NAME)
-            lastName.validateField(ProfileField.LAST_NAME)
-            dateOfBirth.validateField(ProfileField.DATE_OF_BIRTH)
-            country.validateField(ProfileField.COUNTRY)
-            city.validateField(ProfileField.CITY)
-            postalCode.validateField(ProfileField.POSTAL_CODE)
-            address.validateField(ProfileField.ADDRESS)
-            dateOfBirth.doAfterTextChanged {
-                viewModel.isValidDate(dateOfBirth.text.toString(), ProfileField.DATE_OF_BIRTH)
+            firstNameEdt.validateField(ProfileField.FIRST_NAME)
+            lastNameEdt.validateField(ProfileField.LAST_NAME)
+            dateOfBirthEdt.validateField(ProfileField.DATE_OF_BIRTH)
+            countryEdt.validateField(ProfileField.COUNTRY)
+            cityEdt.validateField(ProfileField.CITY)
+            postalCodeEdt.validateField(ProfileField.POSTAL_CODE)
+            addressEdt.validateField(ProfileField.ADDRESS)
+            dateOfBirthEdt.doAfterTextChanged {
+                viewModel.isValidDate(dateOfBirthEdt.text.toString(), ProfileField.DATE_OF_BIRTH)
             }
         }
     }
@@ -62,11 +62,11 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
     override fun initClicks() {
         super.initClicks()
         with(binding) {
-            save.setOnClickListener {
+            saveBtn.setOnClickListener {
                 viewModel.saveUser()
                 navigator.back()
             }
-            back.setOnClickListener { navigator.back() }
+            backBtn.setOnClickListener { navigator.back() }
         }
     }
 
@@ -77,40 +77,40 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
 
     private fun setUserData() {
         binding {
-            viewModel.updateUserFirstName(firstName.text.toString())
-            viewModel.updateUserLastName(lastName.text.toString())
-            viewModel.updateUserDateOfBirth(dateOfBirth.text.toString().parseUserDate())
+            viewModel.updateUserFirstName(firstNameEdt.text.toString())
+            viewModel.updateUserLastName(lastNameEdt.text.toString())
+            viewModel.updateUserDateOfBirth(dateOfBirthEdt.text.toString().parseUserDate())
             viewModel.updateUserAddress(
-                country.text.toString(),
-                city.text.toString(),
-                postalCode.text.toString(),
-                address.text.toString(),
+                countryEdt.text.toString(),
+                cityEdt.text.toString(),
+                postalCodeEdt.text.toString(),
+                addressEdt.text.toString(),
             )
         }
     }
 
     private fun showUser(user: User) {
         binding {
-            firstName.setText(user.firstName)
-            lastName.setText(user.lastName)
-            dateOfBirth.setText(user.birthDate.formatUserDate())
-            country.setText(user.address.country)
-            city.setText(user.address.city)
-            postalCode.setText(user.address.postalCode.toString())
-            address.setText(user.address.street)
+            firstNameEdt.setText(user.firstName)
+            lastNameEdt.setText(user.lastName)
+            dateOfBirthEdt.setText(user.birthDate.formatUserDate())
+            countryEdt.setText(user.address.country)
+            cityEdt.setText(user.address.city)
+            postalCodeEdt.setText(user.address.postalCode.toString())
+            addressEdt.setText(user.address.street)
         }
     }
 
     private fun handleInputErrors(pair: Pair<ProfileTextState, ProfileField>) {
         binding {
             when (pair.second) {
-                ProfileField.FIRST_NAME -> firstName.handleState(pair.first)
-                ProfileField.LAST_NAME -> lastName.handleState(pair.first)
-                ProfileField.DATE_OF_BIRTH -> dateOfBirth.handleState(pair.first)
-                ProfileField.COUNTRY -> country.handleState(pair.first)
-                ProfileField.CITY -> city.handleState(pair.first)
-                ProfileField.POSTAL_CODE -> postalCode.handleState(pair.first)
-                ProfileField.ADDRESS -> address.handleState(pair.first)
+                ProfileField.FIRST_NAME -> firstNameEdt.handleState(pair.first)
+                ProfileField.LAST_NAME -> lastNameEdt.handleState(pair.first)
+                ProfileField.DATE_OF_BIRTH -> dateOfBirthEdt.handleState(pair.first)
+                ProfileField.COUNTRY -> countryEdt.handleState(pair.first)
+                ProfileField.CITY -> cityEdt.handleState(pair.first)
+                ProfileField.POSTAL_CODE -> postalCodeEdt.handleState(pair.first)
+                ProfileField.ADDRESS -> addressEdt.handleState(pair.first)
             }
         }
         check()
@@ -118,17 +118,17 @@ class ProfileEditFragment : BaseFragment(), LoadingView {
 
     private fun check() {
         with(binding) {
-            save.enable(
-                firstName.gotError()
-                    and lastName.gotError()
-                    and dateOfBirth.gotError()
-                    and country.gotError()
-                    and city.gotError()
-                    and postalCode.gotError()
-                    and address.gotError()
+            saveBtn.enable(
+                firstNameEdt.gotError()
+                    and lastNameEdt.gotError()
+                    and dateOfBirthEdt.gotError()
+                    and countryEdt.gotError()
+                    and cityEdt.gotError()
+                    and postalCodeEdt.gotError()
+                    and addressEdt.gotError()
             )
 
-            if (save.isEnabled) setUserData()
+            if (saveBtn.isEnabled) setUserData()
         }
     }
 

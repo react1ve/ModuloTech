@@ -29,13 +29,13 @@ class ProfileFragment : BaseFragment(), LoadingView {
     override fun initClicks() {
         super.initClicks()
         with(binding) {
-            edit.setOnClickListener { navigator.openEditProfile() }
-            signOut.setOnClickListener {
+            editImg.setOnClickListener { navigator.openEditProfile() }
+            signOutTv.setOnClickListener {
                 viewModel.logOut()
                 requireActivity().finish()
             }
-            languageSetting.setOnClickListener { openLanguageBottomSheet() }
-            darkModeSetting.setOnClickListener { openThemeBottomSheet() }
+            languageSettingTv.setOnClickListener { openLanguageBottomSheet() }
+            darkModeSettingTv.setOnClickListener { openThemeBottomSheet() }
         }
     }
 
@@ -52,7 +52,7 @@ class ProfileFragment : BaseFragment(), LoadingView {
 
     private fun showUser(user: User) {
         with(binding) {
-            fullName.text = user.getFullName()
+            fullNameTv.text = user.getFullName()
         }
     }
 

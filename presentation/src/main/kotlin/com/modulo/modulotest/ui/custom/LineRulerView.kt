@@ -17,9 +17,7 @@ class LineRulerView @JvmOverloads constructor(
         private const val MAX_DATA = 100f
         private const val MIN_DATA = 0f
         const val DISPLAY_NUMBER_TYPE_MULTIPLE = 2
-
     }
-
 
     private var minValue = MIN_DATA
     private var maxValue = MAX_DATA
@@ -42,19 +40,13 @@ class LineRulerView @JvmOverloads constructor(
     private val selectedColor = R.color.line_ruler_selected_color
     private val unselectedColor = R.color.line_ruler_unselected_color
 
-    init {
-        init()
-    }
-
-    private lateinit var paint: Paint
-    private fun init() {
-        paint = Paint().apply {
+    private val paint: Paint by lazy {
+        Paint().apply {
             color = context.getColor(unselectedColor)
             strokeWidth = 5f
             isAntiAlias
             style = Paint.Style.STROKE
         }
-        invalidate()
     }
 
     fun setMinMaxValue(minValue: Float, maxValue: Float) {

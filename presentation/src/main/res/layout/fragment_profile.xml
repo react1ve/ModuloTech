@@ -15,13 +15,13 @@
         android:layout_marginTop="@dimen/size_60dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img"
+            android:id="@+id/userImg"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/placeholder" />
 
         <ImageView
-            android:id="@+id/edit"
+            android:id="@+id/editImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -33,7 +33,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/fullName"
+        android:id="@+id/fullNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -46,7 +46,7 @@
         tools:text="@tools:sample/full_names" />
 
     <TextView
-        android:id="@+id/languageSetting"
+        android:id="@+id/languageSettingTv"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="40dp"
@@ -63,7 +63,7 @@
     <include layout="@layout/divider" />
 
     <TextView
-        android:id="@+id/darkModeSetting"
+        android:id="@+id/darkModeSettingTv"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:fontFamily="@font/medium"
@@ -79,7 +79,7 @@
     <include layout="@layout/divider" />
 
     <TextView
-        android:id="@+id/signOut"
+        android:id="@+id/signOutTv"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:fontFamily="@font/medium"

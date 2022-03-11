@@ -17,8 +17,8 @@ class FilterAdapter(private val listener: ((filter: Filter) -> Unit)) :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(filter: Filter) {
             binding.root.setOnClickListener { listener.invoke(filter) }
-            binding.name.text = filter.name
-            binding.name.isSelected = filter.isSelected
+            binding.nameTv.text = filter.name
+            binding.nameTv.isSelected = filter.isSelected
         }
     }
 

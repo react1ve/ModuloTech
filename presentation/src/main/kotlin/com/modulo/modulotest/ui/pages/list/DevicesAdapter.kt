@@ -74,9 +74,9 @@ class DevicesAdapter(
 
             binding.apply {
                 root.setOnClickListener { selectedItem.invoke(item, false) }
-                delete.setOnClickListener { selectedItem.invoke(item, true) }
-                brandTextView.text = item.deviceName
-                modelTextView.text = item.productType.title
+                deleteImg.setOnClickListener { selectedItem.invoke(item, true) }
+                nameTv.text = item.deviceName
+                modelTv.text = item.productType.title
                 iconImg.setImageResource(getRandomImg(item, absoluteAdapterPosition))
             }
         }

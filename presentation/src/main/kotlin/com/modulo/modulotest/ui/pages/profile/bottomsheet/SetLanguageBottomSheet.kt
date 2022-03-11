@@ -19,11 +19,11 @@ class SetLanguageBottomSheet(private val listener: (lang: String) -> Unit) : Bot
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-            french.setOnClickListener {
+            frenchTv.setOnClickListener {
                 dismiss()
                 listener("fr")
             }
-            english.setOnClickListener {
+            englishTv.setOnClickListener {
                 dismiss()
                 listener("eng")
             }

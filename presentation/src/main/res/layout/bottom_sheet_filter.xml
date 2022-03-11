@@ -7,26 +7,26 @@
     android:background="@drawable/bottom_sheet_rounded_bg">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleTv"
         android:text="@string/filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/BottomSheetTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/statusRv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
         android:paddingHorizontal="14dp"
         app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/titleTv"
         tools:itemCount="4"
         tools:listitem="@layout/item_selectable_text" />
 
     <Button
-        android:id="@+id/reset"
+        android:id="@+id/resetBtn"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_marginStart="@dimen/size_10dp"
@@ -37,12 +37,12 @@
         android:enabled="false"
         android:text="@string/reset"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/apply"
+        app:layout_constraintEnd_toStartOf="@id/applyBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler" />
+        app:layout_constraintTop_toBottomOf="@id/statusRv" />
 
     <Button
-        android:id="@+id/apply"
+        android:id="@+id/applyBtn"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_marginStart="6dp"
@@ -50,7 +50,7 @@
         android:layout_weight="1"
         android:text="@string/apply"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/reset"
-        app:layout_constraintTop_toTopOf="@id/reset" />
+        app:layout_constraintStart_toEndOf="@id/resetBtn"
+        app:layout_constraintTop_toTopOf="@id/resetBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

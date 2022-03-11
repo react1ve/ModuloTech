@@ -20,7 +20,7 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_10dp"
@@ -39,8 +39,8 @@
         android:text="@string/just_updated"
         android:textColor="@color/fontSecondary"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/title"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintStart_toStartOf="@id/titleTv"
+        app:layout_constraintTop_toBottomOf="@id/titleTv" />
 
     <ImageView
         android:id="@+id/filter"
@@ -63,7 +63,7 @@
         android:tint="@color/blue"
         app:layout_constraintBottom_toBottomOf="@id/subtitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/title"
+        app:layout_constraintTop_toTopOf="@id/titleTv"
         tools:ignore="ContentDescription,UseAppTint" />
 
 

@@ -31,11 +31,11 @@ class FilterBottomSheet(
 
     private fun initClicks() {
 
-        binding.reset.setOnClickListener {
+        binding.resetBtn.setOnClickListener {
             dismiss()
             filterListener.invoke(null)
         }
-        binding.apply.setOnClickListener {
+        binding.applyBtn.setOnClickListener {
             filterListener.invoke(filterList.filter { it.isSelected }.map { it.name })
             dismiss()
         }
@@ -51,8 +51,8 @@ class FilterBottomSheet(
         }.apply {
             setItems(filterList)
         }
-        binding.recycler.adapter = adapter
-        binding.recycler.layoutManager = FlexboxLayoutManager(requireContext()).apply {
+        binding.statusRv.adapter = adapter
+        binding.statusRv.layoutManager = FlexboxLayoutManager(requireContext()).apply {
             flexDirection = FlexDirection.ROW
             justifyContent = JustifyContent.FLEX_START
         }

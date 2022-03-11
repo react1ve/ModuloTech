@@ -5,12 +5,12 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleTv"
         style="@style/BottomSheetTitle"
         android:text="@string/app_language" />
 
     <TextView
-        android:id="@+id/french"
+        android:id="@+id/frenchTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/size_22dp"
@@ -25,7 +25,7 @@
     <include layout="@layout/divider" />
 
     <TextView
-        android:id="@+id/english"
+        android:id="@+id/englishTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/size_22dp"

@@ -12,7 +12,7 @@
     android:translationZ="5dp">
 
     <ImageView
-        android:id="@+id/icon_img"
+        android:id="@+id/iconImg"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/ic_light_bulb_3"
@@ -22,12 +22,12 @@
         tools:ignore="ContentDescription,UseAppTint" />
 
     <ImageView
-        android:id="@+id/delete"
+        android:id="@+id/deleteImg"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/ic_delete"
         android:tint="@color/red"
-        app:layout_constraintBottom_toBottomOf="@id/model_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/modelTv"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,UseAppTint" />
 
@@ -37,14 +37,14 @@
         android:layout_height="@dimen/thumb_height"
         android:thumb="@drawable/thumb"
         android:track="@drawable/track"
-        app:layout_constraintBottom_toBottomOf="@id/icon_img"
+        app:layout_constraintBottom_toBottomOf="@id/iconImg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/icon_img"
+        app:layout_constraintTop_toTopOf="@id/iconImg"
         tools:checked="true"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
-        android:id="@+id/brand_text_view"
+        android:id="@+id/nameTv"
         style="@style/Text.FontBold.Black.DP18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,13 +53,13 @@
         android:maxLines="2"
         android:textColor="@color/font"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/model_text_view"
+        app:layout_constraintBottom_toTopOf="@id/modelTv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/icon_img"
+        app:layout_constraintTop_toBottomOf="@id/iconImg"
         tools:text="Air" />
 
     <TextView
-        android:id="@+id/model_text_view"
+        android:id="@+id/modelTv"
         style="@style/Text.FontRegular.Primary.DP14"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         android:textColor="@color/fontSecondary"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/delete"
+        app:layout_constraintEnd_toStartOf="@id/deleteImg"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Panasonic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
