@@ -62,15 +62,15 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
                     when (it) {
                         is Device.Light -> {
                             current.text = it.intensity.toString()
-                            viewModel.setIntensity(progress.toInt())
+                            viewModel.updateIntensity(progress.toInt())
                         }
                         is Device.Heater -> {
                             current.text = getString(R.string.c, it.temperature.toString())
-                            viewModel.setTemperature((progress / 2).formatDecimalPoint())
+                            viewModel.updateTemperature((progress / 2).formatDecimalPoint())
                         }
                         is Device.RollerShutter -> {
                             current.text = it.position.toString()
-                            viewModel.setPosition(progress.toInt())
+                            viewModel.updatePosition(progress.toInt())
                         }
                     }
                 }
@@ -120,7 +120,7 @@ class DeviceDetailsFragment : BaseFragment(), BackListener {
 
     private fun setPowerMode(on: Boolean) {
         binding.power.setImageResource(if (on) R.drawable.ic_power_red else R.drawable.ic_power_blue)
-        viewModel.setMode(on)
+        viewModel.updateMode(on)
     }
 
     override fun onBackPressed(): Boolean {

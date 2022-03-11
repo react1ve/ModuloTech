@@ -18,7 +18,7 @@ class DetailsViewModel(
     private val deviceInteractor: DeviceInteractor
 ) : MvvmViewModel() {
 
-    override val tag: String = "DetailsViewModel"
+    override val tag: String = this::class.java.simpleName
 
     private val _updateErrorEvent = SingleLiveData<String?>()
     val updateErrorEvent: LiveData<String?> get() = _updateErrorEvent
@@ -32,25 +32,25 @@ class DetailsViewModel(
         }
     }
 
-    fun setIntensity(value: Int) {
+    fun updateIntensity(value: Int) {
         if (device is Device.Light) {
             device.intensity = value
         }
     }
 
-    fun setTemperature(value: Double) {
+    fun updateTemperature(value: Double) {
         if (device is Device.Heater) {
             device.temperature = value
         }
     }
 
-    fun setPosition(value: Int) {
+    fun updatePosition(value: Int) {
         if (device is Device.RollerShutter) {
             device.position = value
         }
     }
 
-    fun setMode(on: Boolean) {
+    fun updateMode(on: Boolean) {
         when (device) {
             is Device.Light -> device.setChecked(on)
             is Device.Heater -> device.setChecked(on)

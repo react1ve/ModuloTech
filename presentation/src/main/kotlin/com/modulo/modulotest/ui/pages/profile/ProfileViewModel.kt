@@ -29,7 +29,7 @@ class ProfileViewModel(
         const val MIN_INPUT_REQUIREMENT_LENGTH = 3
     }
 
-    override val tag: String get() = "ListViewModel"
+    override val tag: String get() = this::class.java.simpleName
 
     private var user: User? = null
 
@@ -44,10 +44,10 @@ class ProfileViewModel(
 
     override fun attach() {
         super.attach()
-        getUser()
+        fetchUser()
     }
 
-    private fun getUser() {
+    private fun fetchUser() {
         viewModelScope.launch(Dispatchers.Main) {
             flow { emit(userInteractor.getUser()) }
                 .flowOn(Dispatchers.IO)
@@ -84,7 +84,7 @@ class ProfileViewModel(
             user?.let {
                 userInteractor.saveUser(it)
             }
-            getUser()
+            fetchUser()
         }
     }
 
@@ -94,19 +94,19 @@ class ProfileViewModel(
         }
     }
 
-    fun setUserFirstName(firstName: String) {
+    fun updateUserFirstName(firstName: String) {
         user = user?.copy(firstName = firstName)
     }
 
-    fun setUserLastName(lastName: String) {
+    fun updateUserLastName(lastName: String) {
         user = user?.copy(lastName = lastName)
     }
 
-    fun setUserDateOfBirth(birthDate: Long) {
+    fun updateUserDateOfBirth(birthDate: Long) {
         user = user?.copy(birthDate = birthDate)
     }
 
-    fun setUserAddress(country: String, city: String, postalCode: String, street: String) {
+    fun updateUserAddress(country: String, city: String, postalCode: String, street: String) {
         user = user?.copy(
             address = Address(
                 country = country,
@@ -117,11 +117,11 @@ class ProfileViewModel(
         )
     }
 
-    fun setAppTheme(themeMode: Int) {
+    fun updateAppTheme(themeMode: Int) {
         viewModelScope.launch { userInteractor.setAppTheme(themeMode) }
     }
 
-    fun setAppLang(lang: String) {
+    fun updateAppLang(lang: String) {
         viewModelScope.launch { userInteractor.setAppLang(lang) }
     }
 

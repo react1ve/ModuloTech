@@ -58,7 +58,7 @@ class ProfileFragment : BaseFragment(), LoadingView {
 
     private fun openThemeBottomSheet() {
         val bsh = SetThemeBottomSheet {
-            viewModel.setAppTheme(it)
+            viewModel.updateAppTheme(it)
             AppCompatDelegate.setDefaultNightMode(it)
         }
         if (!bsh.isAdded) bsh.show(parentFragmentManager, "")
@@ -67,7 +67,7 @@ class ProfileFragment : BaseFragment(), LoadingView {
     private fun openLanguageBottomSheet() {
         val bsh = SetLanguageBottomSheet {
             if (it == resources.configuration.locale.language) return@SetLanguageBottomSheet
-            viewModel.setAppLang(it)
+            viewModel.updateAppLang(it)
             Lingver.getInstance().setLocale(requireContext(), it)
 
             val i = Intent(requireActivity(), MainActivity::class.java)

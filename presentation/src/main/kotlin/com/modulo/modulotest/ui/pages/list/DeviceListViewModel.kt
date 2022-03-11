@@ -21,7 +21,7 @@ class DeviceListViewModel(
     private val deviceInteractor: DeviceInteractor
 ) : MvvmViewModel() {
 
-    override val tag: String get() = "ListViewModel"
+    override val tag: String get() = this::class.java.simpleName
 
     private val _deviceListState = MutableLiveData<List<Device>>()
     val deviceListState: LiveData<List<Device>> = _deviceListState
@@ -36,11 +36,11 @@ class DeviceListViewModel(
 
     override fun attach() {
         super.attach()
-        getDevices()
+        fetchDevices()
     }
 
     private var deviceList = listOf<Device>()
-    private fun getDevices(showLoading: Boolean = true) {
+    private fun fetchDevices(showLoading: Boolean = true) {
         viewModelScope.launch(Dispatchers.Main) {
             flow { emit(deviceInteractor.getDevices()) }
                 .flowOn(Dispatchers.IO)
@@ -78,7 +78,7 @@ class DeviceListViewModel(
                 .flowOn(Dispatchers.IO)
                 .onCompletion { _loadingProgressEvent.value = false }
                 .catch { _loadingErrorEvent.value = it.message }
-                .collect { getDevices(false) }
+                .collect { fetchDevices(false) }
         }
     }
 
