@@ -37,13 +37,12 @@ Your project must be accessible on a Git project.
 • SVG icons - https://www.svgrepo.com
 
 ## Screenshot
-<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen1.jpg">
-<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen1_with_filter.jpg">
-<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen2.jpg">
-<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen3.jpg">
-<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen4.jpg">
-<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/all_screens.jpg">
-
+<img width="256px" src="/screen1.jpg">
+<img width="256px" src="/screen1_with_filter.jpg">
+<img width="256px" src="/screen2.jpg">
+<img width="256px" src="/screen3.jpg">
+<img width="256px" src="/screen4.jpg">
+<img width="256px" src="/all_screens.gif">
 
 ## Tech stack
 - Clean Architecture
