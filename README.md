@@ -37,12 +37,12 @@ Your project must be accessible on a Git project.
 • SVG icons - https://www.svgrepo.com
 
 ## Screenshot
-<img align="left" width="296" height="576" src="https://drive.google.com/file/d/1XnXYeJA6Dck3b08GXCbdtYnG-zNZLpcJ/view?usp=sharing">
-<img align="left" width="296" height="576" src="https://drive.google.com/file/d/1wCMr6GdHlgjWIiYkB6U0k_oV9Pz7GFqe/view?usp=sharing">
-<img align="left" width="296" height="576" src="https://drive.google.com/file/d/16-rIsTXl6baNO4wjEP3eheFMoIX2Ku9h/view?usp=sharing">
-<img align="left" width="296" height="576" src="https://drive.google.com/file/d/1dQiQ2hYB1zBf5o9nm10astsKCdTM0cT8/view?usp=sharing">
-<img align="left" width="296" height="576" src="https://drive.google.com/file/d/1uUSZg4VlTP4h3CIQMnyZAcP2yzKvOEdP/view?usp=sharing">
-<img align="left" width="296" height="576" src="https://drive.google.com/file/d/1myjKRxBkCW-97jJtGf-_mYm48ZKVbKpi/view?usp=sharing">
+<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen1.jpg">
+<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen1_with_filter.jpg">
+<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen2.jpg">
+<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen3.jpg">
+<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/screen4.jpg">
+<img align="left" width="296" height="576" src="https://github.com/react1ve/ModuloTech/blob/master/all_screens.jpg">
 
 
 ## Tech stack
